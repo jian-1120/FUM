@@ -108,7 +108,8 @@ These issues can cause problems in:
 
 ## 📸 Preview | 效果展示
 
-> （请在这里添加截图）
+> <img width="849" height="711" alt="image" src="https://github.com/user-attachments/assets/40a99669-09d7-4814-863e-1b2fe7f5d37a" />
+
 
 ```id="demo_path"
 images/demo.png
