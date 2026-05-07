@@ -12,6 +12,8 @@ A lightweight Blender addon for detecting and highlighting non-manifold edges in
 
 * 🔍 检测模型中的非流形边
   Detect non-manifold edges in the active mesh
+* 🔺 检测模型中的重复顶点 (支持阈值调节)
+  Detect duplicate vertices in the active mesh (with adjustable threshold)
 
 * 🎯 自动高亮问题边
   Highlight problematic edges in Edit Mode
@@ -122,7 +124,14 @@ images/demo.png
 ```id="proj_struct"
 fum/
 │
-├── model_doctor.py
+├── __init__.py
+├── operators/
+│   ├── __init__.py
+│   ├── non_manifold_edges.py
+│   └── duplicate_vertices.py
+├── ui/
+│   ├── __init__.py
+│   └── panel.py
 ├── README.md
 ├── LICENSE
 └── images/
@@ -132,7 +141,7 @@ fum/
 
 ## 🛠️ Roadmap | 开发计划
 
-* [ ] 重复顶点检测（Merge by Distance问题）
+* [x] 重复顶点检测（Merge by Distance问题）
 * [ ] 法线方向检测
 * [ ] 模型质量评分系统
 * [ ] AI辅助优化建议
