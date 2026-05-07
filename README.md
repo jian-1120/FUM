@@ -28,8 +28,12 @@ A lightweight Blender addon for detecting and highlighting non-manifold edges in
 
 ## 📦 Installation | 安装方法
 
-1. 下载 `.py` 文件（例如 `model_doctor.py`）
-   Download the `.py` file (e.g. `model_doctor.py`)
+> **📥 推荐下载方式（解压即用）：**
+> 1. 进入 `release/` 文件夹，点击 `Code` → `Download ZIP`，单独下载该文件夹。
+> 2. 解压后直接得到可安装的插件文件夹，Blender 安装即可。
+
+1. 下载插件文件
+   Download the addon file
 
 2. 打开 Blender
    Open Blender
