@@ -2,6 +2,7 @@ import bpy
 
 from ..operators.non_manifold_edges import non_manifold_edge_count
 from ..operators.duplicate_vertices import duplicate_vertex_count
+from ..operators.flipped_normals import flipped_face_count
 
 class VIEW3D_PT_FUMPanel(bpy.types.Panel):
     """FUM 插件主面板"""
@@ -37,3 +38,14 @@ class VIEW3D_PT_FUMPanel(bpy.types.Panel):
             row.label(text=f"检测到 {duplicate_vertex_count} 个重复顶点")
         else:
             row.label(text="未检测到重复顶点")
+
+        # 翻转法线检测部分
+        box = layout.box()
+        box.label(text="翻转法线检测")
+        row = box.row()
+        row.operator("fum.detect_flipped_normals")
+        row = box.row()
+        if flipped_face_count > 0:
+            row.label(text=f"检测到 {flipped_face_count} 个翻转法线面")
+        else:
+            row.label(text="未检测到翻转法线面")
