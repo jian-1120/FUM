@@ -32,25 +32,29 @@ A lightweight Blender addon for detecting and highlighting non-manifold edges in
 
 ## 📦 Installation | 安装方法
 
-> **📥 推荐下载方式（解压即用）：**
-> 1. 进入 `release/` 文件夹，点击 `Code` → `Download ZIP`，单独下载该文件夹。
-> 2. 解压后直接得到可安装的插件文件夹，Blender 安装即可。
+⚠️ **重要：下载后请先检查文件夹结构！**
+从 GitHub 下载的 ZIP 解压后，你会得到一个类似 `FUM-main` 的文件夹。点击进入后，你会看到 `FUM`、`release`、`README.md` 等文件。
 
-1. 下载插件文件
-   Download the addon file
+其中只有 `FUM` 文件夹是真正的插件包，里面有 `__init__.py`、`operators/`、`ui/` 等文件。
 
-2. 打开 Blender
-   Open Blender
+请根据你的安装方式，将正确的 `FUM` 文件夹提供给 Blender。
 
-3. 进入：
-   Go to:
-   `Edit → Preferences → Add-ons`
+---
 
-4. 点击 **Install** 并选择插件文件
-   Click **Install** and select the addon file
+### 方法一：Blender 内安装（推荐）
 
-5. 勾选启用插件
-   Enable the addon
+1. 下载并解压 ZIP 文件（例如 `FUM-main.zip`）。
+2. 进入 `FUM-main` 文件夹，找到里面的 `FUM` 文件夹。
+3. 打开 Blender → `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)`。
+4. 点击 `安装(Install...)` 按钮，然后**选中里层的 `FUM` 文件夹**（不是 `FUM-main`），点击“安装插件”。
+5. 在插件列表搜索 `FUM`，勾选启用。
+
+### 方法二：手动复制到 `addons` 目录（备用方案，适合安装器不稳定时使用）
+
+1. 下载并解压 ZIP 文件，进入 `FUM-main`，找到里面的 `FUM` 文件夹。
+2. 打开 Blender 的插件目录（通常是 `C:\Users\[你的用户名]\AppData\Roaming\Blender Foundation\Blender\[版本号]\scripts\addons\`）。
+3. 将**里层的 `FUM` 文件夹**整个复制到该目录下。
+4. 重启 Blender → `偏好设置(Preferences)` → `插件(Add-ons)` → 搜索 `FUM` → 勾选启用。
 
 ---
 
