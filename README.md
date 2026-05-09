@@ -48,24 +48,24 @@ A professional Blender mesh inspection and diagnostic plugin designed to help 3D
 
 ---
 
-### 步骤一：下载插件 | Step 1: Download the Addon
+### 步骤一：下载插件 ZIP 包 | Step 1: Download the Addon ZIP Package
 
-从 GitHub Releases 页面下载最新版插件 ZIP 文件：
-Download the latest addon ZIP file from the GitHub Releases page:
+从 GitHub Releases 页面下载最新版插件 ZIP 文件（例如 `FUM_vx.x.x.zip`）：
+Download the latest addon ZIP file from the GitHub Releases page (e.g., `FUM_vx.x.x.zip`):
 
 👉 **[下载 FUM 最新版本 (Download FUM Latest Release)](https://github.com/jian-1120/FUM/releases/latest)**
 
 ---
 
-### 步骤二：解压并找到插件文件夹 | Step 2: Unzip and Locate the Addon Folder
+### 步骤二：解压并找到真正的插件文件夹 | Step 2: Unzip and Locate the Actual Addon Folder
 
-解压下载的 `FUM_vx.x.x.zip` 文件。你会看到一个名为 `FUM-main` 的文件夹。进入该文件夹，找到**内层的 `FUM` 文件夹**。
+解压下载的 ZIP 文件。你会看到一个名为 `FUM-main` 的文件夹（这是 GitHub 默认行为）。进入该文件夹，找到**内层的 `FUM` 文件夹**。
 
-Unzip the downloaded `FUM_vx.x.x.zip` file. You will find a folder named `FUM-main`. Navigate into this folder to locate the **inner `FUM` folder**.
+Unzip the downloaded ZIP file. You will find a folder named `FUM-main` (this is GitHub's default behavior). Navigate into this folder to locate the **inner `FUM` folder**.
 
 ---
 
-### 步骤三：放入 Blender `addons` 目录 | Step 3: Place into Blender `addons` Directory
+### 步骤三：复制到 Blender `addons` 目录 | Step 3: Copy to Blender `addons` Directory
 
 将步骤二中找到的**内层 `FUM` 文件夹**整体复制到 Blender 的 `addons` 插件目录。该目录通常位于：
 Copy the **inner `FUM` folder** found in Step 2 directly into Blender's `addons` directory. This directory is typically located at:
@@ -76,7 +76,7 @@ Copy the **inner `FUM` folder** found in Step 2 directly into Blender's `addons`
 
 ---
 
-### 步骤四：在 Blender 中启用 | Step 4: Enable in Blender
+### 步骤四：在 Blender 中启用插件 | Step 4: Enable the Addon in Blender
 
 1.  打开 Blender。
     Open Blender.
@@ -108,6 +108,18 @@ Copy the **inner `FUM` folder** found in Step 2 directly into Blender's `addons`
     Restart Blender.
 7.  进入 `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)`，搜索 `FUM` 并勾选启用。
     Go to `Edit` → `Preferences` → `Add-ons`, search for `FUM`, and enable it.
+
+---
+
+## 💡 未来计划 | Future Plan
+
+我们正在积极探索优化插件打包和安装流程，目标是实现：
+We are actively exploring ways to optimize the addon packaging and installation process, aiming for:
+
+*   **标准 Blender ZIP 打包**: 允许用户直接通过 Blender 的 `Install from ZIP` 功能安装。
+    **Standard Blender ZIP Packaging**: Enable direct installation via Blender's `Install from ZIP` feature.
+*   **自动化 Release 打包**: 自动生成符合 Blender 规范的 ZIP 包，减少手动操作。
+    **Automated Release Packaging**: Automatically generate Blender-compliant ZIP packages to minimize manual steps.
 
 ---
 
