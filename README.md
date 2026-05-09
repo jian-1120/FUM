@@ -1,10 +1,16 @@
 # FUM 🛠️
 
-**Fix Your Mesh — A Blender Modeling Assistant**
+**Fix Your Mesh — A Blender Mesh Inspection Plugin**
 
-一个用于检测和高亮非流形边的 Blender 建模辅助插件。
+FUM 是一个专业的 Blender 模型拓扑检测与诊断插件，旨在帮助 3D 艺术家快速定位并修复模型中的几何问题。
 
-A lightweight Blender addon for detecting and highlighting non-manifold edges in mesh objects.
+A professional Blender mesh inspection and diagnostic plugin designed to help 3D artists quickly locate and fix geometric issues in their models.
+
+---
+
+## 📥 Download Latest Version | 下载最新版本
+
+👉 **[点击这里下载 FUM 最新版本 (Download FUM Latest Release)](https://github.com/jian-1120/FUM/releases/latest)**
 
 ---
 
@@ -35,7 +41,7 @@ A lightweight Blender addon for detecting and highlighting non-manifold edges in
 ## 📦 Installation | 安装方法
 
 ⚠️ **重要：下载后请先检查文件夹结构！**
-从 GitHub 下载的 ZIP 解压后，你会得到一个类似 `FUM-main` 的文件夹。点击进入后，你会看到 `FUM`、`release`、`README.md` 等文件。
+从 GitHub 下载的 ZIP 解压后，会出现一个 `FUM-main` 文件夹。点击进入后，你会看到 `FUM`、`release`、`README.md` 等文件。
 
 其中只有 `FUM` 文件夹是真正的插件包，里面有 `__init__.py`、`operators/`、`ui/` 等文件。
 
@@ -45,10 +51,10 @@ A lightweight Blender addon for detecting and highlighting non-manifold edges in
 
 ### 方法一：Blender 内安装（推荐）
 
-1. 下载并解压 ZIP 文件（例如 `FUM-main.zip`）。
+1. 下载并解压 ZIP 文件。
 2. 进入 `FUM-main` 文件夹，找到里面的 `FUM` 文件夹。
-3. 打开 Blender → `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)`。
-4. 点击 `安装(Install...)` 按钮，然后**选中里层的 `FUM` 文件夹**（不是 `FUM-main`），点击“安装插件”。
+3. 打开 Blender → `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)` → `安装...`。
+4. **选中里层的 `FUM` 文件夹**（不是 `FUM-main`），点击“安装插件”。
 5. 在插件列表搜索 `FUM`，勾选启用。
 
 ### 方法二：手动复制到 `addons` 目录（备用方案，适合安装器不稳定时使用）
@@ -126,11 +132,15 @@ These issues can cause problems in:
 
 > <img width="841" height="727" alt="image" src="https://github.com/user-attachments/assets/35e47d0a-22c7-4797-b23a-11cbe4743970" /><img width="621" height="749" alt="TU" src="https://github.com/user-attachments/assets/c433c826-61c4-4891-a5dc-32acee7e1a27" />
 
-
-
 ```id="demo_path"
 images/demo.png
 ```
+
+---
+
+## 🖼️ Screenshots | 截图展示
+
+*(预留区域：未来将在此添加更多功能演示 GIF 与截图)*
 
 ---
 
