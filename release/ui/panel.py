@@ -3,6 +3,7 @@ import bpy
 from ..operators.non_manifold_edges import non_manifold_edge_count
 from ..operators.duplicate_vertices import duplicate_vertex_count
 from ..operators.flipped_normals import flipped_face_count
+from ..operators.ngons import ngon_count
 
 class VIEW3D_PT_FUMPanel(bpy.types.Panel):
     """FUM 插件主面板"""
@@ -49,3 +50,14 @@ class VIEW3D_PT_FUMPanel(bpy.types.Panel):
             row.label(text=f"检测到 {flipped_face_count} 个翻转法线面")
         else:
             row.label(text="未检测到翻转法线面")
+
+        # N-Gon 检测部分
+        box = layout.box()
+        box.label(text="N-Gon 检测")
+        row = box.row()
+        row.operator("fum.detect_ngons")
+        row = box.row()
+        if ngon_count > 0:
+            row.label(text=f"检测到 {ngon_count} 个 N-Gons")
+        else:
+            row.label(text="未检测到 N-Gons")

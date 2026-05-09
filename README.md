@@ -18,6 +18,8 @@ A lightweight Blender addon for detecting and highlighting non-manifold edges in
   Detect flipped normals faces in the active mesh
 * 🎨 自动高亮问题面
   Highlight problematic faces in Edit Mode
+* 🔲 检测 N-Gons (边数 > 4 的面)
+  Detect N-Gons (faces with more than 4 edges)
 
 * 🎯 自动高亮问题边
   Highlight problematic edges in Edit Mode
@@ -142,7 +144,8 @@ fum/
 │   ├── __init__.py
 │   ├── non_manifold_edges.py
 │   ├── duplicate_vertices.py
-│   └── flipped_normals.py
+│   ├── flipped_normals.py
+│   └── ngons.py
 ├── ui/
 │   ├── __init__.py
 │   └── panel.py
@@ -157,6 +160,7 @@ fum/
 
 * [x] 重复顶点检测（Merge by Distance问题）
 * [x] 法线方向检测
+* [x] N-Gon 检测
 * [ ] 模型质量评分系统
 * [ ] AI辅助优化建议
 
