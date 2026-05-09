@@ -100,8 +100,8 @@ Copy the **inner `FUM` folder** found in Step 2 directly into Blender's `addons`
     Navigate to Blender's `addons` directory (refer to "Step 3" above).
 3.  **删除旧版本 `FUM` 文件夹**。确保该目录中不再有任何旧的 `FUM` 文件。
     **Delete the old `FUM` folder**. Ensure no old `FUM` files remain in this directory.
-4.  （可选）如果存在 `__pycache__` 文件夹，可以保留或删除。
-    (Optional) If a `__pycache__` folder exists, you may keep or delete it.
+4.  如果存在 `__pycache__` 文件夹，要保留。
+    If a `__pycache__` folder exists, you may keep.
 5.  按照上述“安装指南”的步骤，将新版**内层 `FUM` 文件夹**复制到 `addons` 目录。
     Follow the "Installation Guide" steps above to copy the new **inner `FUM` folder** into the `addons` directory.
 6.  重新打开 Blender。
