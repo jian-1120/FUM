@@ -38,31 +38,76 @@ A professional Blender mesh inspection and diagnostic plugin designed to help 3D
 
 ---
 
-## 📦 Installation | 安装方法
+## 📥 安装指南 | Installation Guide
 
-⚠️ **重要：下载后请先检查文件夹结构！**
-从 GitHub 下载的 ZIP 解压后，会出现一个 `FUM-main` 文件夹。点击进入后，你会看到 `FUM`、`release`、`README.md` 等文件。
+### ⚠️ 重要提示 | Important Note
 
-其中只有 `FUM` 文件夹是真正的插件包，里面有 `__init__.py`、`operators/`、`ui/` 等文件。
+从 GitHub 下载的 ZIP 文件（例如 `FUM-main.zip`）解压后，通常会得到一个名为 `FUM-main` 的文件夹。进入该文件夹后，你会发现真正的插件本体是**内层的 `FUM` 文件夹**，其中包含 `__init__.py`、`operators/`、`ui/` 等文件。请务必将这个内层的 `FUM` 文件夹提供给 Blender 进行安装。
 
-请根据你的安装方式，将正确的 `FUM` 文件夹提供给 Blender。
+⚠️ **Please make sure you install the INNER "FUM" folder, not the outer folder with the "-main" suffix.**
 
 ---
 
-### 方法一：Blender 内安装（推荐）
+### 步骤一：下载插件 | Step 1: Download the Addon
 
-1. 下载并解压 ZIP 文件。
-2. 进入 `FUM-main` 文件夹，找到里面的 `FUM` 文件夹。
-3. 打开 Blender → `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)` → `安装...`。
-4. **选中里层的 `FUM` 文件夹**（不是 `FUM-main`），点击“安装插件”。
-5. 在插件列表搜索 `FUM`，勾选启用。
+从 GitHub Releases 页面下载最新版插件 ZIP 文件：
+Download the latest addon ZIP file from the GitHub Releases page:
 
-### 方法二：手动复制到 `addons` 目录（备用方案，适合安装器不稳定时使用）
+👉 **[下载 FUM 最新版本 (Download FUM Latest Release)](https://github.com/jian-1120/FUM/releases/latest)**
 
-1. 下载并解压 ZIP 文件，进入 `FUM-main`，找到里面的 `FUM` 文件夹。
-2. 打开 Blender 的插件目录（通常是 `C:\Users\[你的用户名]\AppData\Roaming\Blender Foundation\Blender\[版本号]\scripts\addons\`）。
-3. 将**里层的 `FUM` 文件夹**整个复制到该目录下。
-4. 重启 Blender → `偏好设置(Preferences)` → `插件(Add-ons)` → 搜索 `FUM` → 勾选启用。
+---
+
+### 步骤二：解压并找到插件文件夹 | Step 2: Unzip and Locate the Addon Folder
+
+解压下载的 `FUM_vx.x.x.zip` 文件。你会看到一个名为 `FUM-main` 的文件夹。进入该文件夹，找到**内层的 `FUM` 文件夹**。
+
+Unzip the downloaded `FUM_vx.x.x.zip` file. You will find a folder named `FUM-main`. Navigate into this folder to locate the **inner `FUM` folder**.
+
+---
+
+### 步骤三：放入 Blender `addons` 目录 | Step 3: Place into Blender `addons` Directory
+
+将步骤二中找到的**内层 `FUM` 文件夹**整体复制到 Blender 的 `addons` 插件目录。该目录通常位于：
+Copy the **inner `FUM` folder** found in Step 2 directly into Blender's `addons` directory. This directory is typically located at:
+
+*   **Windows**: `C:\Users\[你的用户名]\AppData\Roaming\Blender Foundation\Blender\[版本号]\scripts\addons\`
+*   **macOS**: `/Users/[你的用户名]/Library/Application Support/Blender/[版本号]/scripts/addons/`
+*   **Linux**: `~/.config/blender/[版本号]/scripts/addons/`
+
+---
+
+### 步骤四：在 Blender 中启用 | Step 4: Enable in Blender
+
+1.  打开 Blender。
+    Open Blender.
+2.  进入 `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)`。
+    Go to `Edit` → `Preferences` → `Add-ons`.
+3.  在搜索框中输入 `FUM`，找到插件。
+    Search for `FUM` in the search bar.
+4.  勾选插件旁边的复选框以启用它。
+    Check the box next to the addon to enable it.
+
+---
+
+## 🔄 更新旧版本插件 | Updating an Existing Version
+
+⚠️ **重要警告：在安装新版本前，务必彻底移除旧版本，否则可能导致插件功能异常或 Blender 崩溃。**
+⚠️ **Important Warning: Before installing a new version, you MUST completely remove the old version to prevent unexpected behavior or Blender crashes.**
+
+1.  **关闭 Blender**。
+    **Close Blender**.
+2.  进入 Blender 的 `addons` 目录（参考上方“步骤三”）。
+    Navigate to Blender's `addons` directory (refer to "Step 3" above).
+3.  **删除旧版本 `FUM` 文件夹**。确保该目录中不再有任何旧的 `FUM` 文件。
+    **Delete the old `FUM` folder**. Ensure no old `FUM` files remain in this directory.
+4.  （可选）如果存在 `__pycache__` 文件夹，可以保留或删除。
+    (Optional) If a `__pycache__` folder exists, you may keep or delete it.
+5.  按照上述“安装指南”的步骤，将新版**内层 `FUM` 文件夹**复制到 `addons` 目录。
+    Follow the "Installation Guide" steps above to copy the new **inner `FUM` folder** into the `addons` directory.
+6.  重新打开 Blender。
+    Restart Blender.
+7.  进入 `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)`，搜索 `FUM` 并勾选启用。
+    Go to `Edit` → `Preferences` → `Add-ons`, search for `FUM`, and enable it.
 
 ---
 
