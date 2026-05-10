@@ -204,7 +204,7 @@ images/demo.png
 ## 📁 Project Structure | 项目结构
 
 ```id="proj_struct"
-fum/
+FUM/
 │
 ├── __init__.py
 ├── operators/
@@ -216,9 +216,7 @@ fum/
 ├── ui/
 │   ├── __init__.py
 │   └── panel.py
-├── README.md
-├── LICENSE
-└── images/
+└── CHANGELOG.md
 ```
 
 ---
