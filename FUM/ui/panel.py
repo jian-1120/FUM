@@ -1,11 +1,5 @@
 import bpy
 
-from ..operators.non_manifold_edges import non_manifold_edge_count
-from ..operators.duplicate_vertices import duplicate_vertex_count
-from ..operators.flipped_normals import flipped_face_count
-from ..operators.ngons import ngon_count
-from ..operators.isolated_vertices import isolated_vertex_count
-
 class VIEW3D_PT_FUMPanel(bpy.types.Panel):
     """FUM 插件主面板"""
     bl_label = "FUM"
@@ -16,60 +10,66 @@ class VIEW3D_PT_FUMPanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
+        scene = context.scene
+
+        # 一键全检按钮
+        col = layout.column(align=True)
+        col.scale_y = 1.5
+        col.operator("fum.full_inspection", icon='VIEWZOOM')
+        layout.separator()
 
         # 非流形边检测部分
         box = layout.box()
-        box.label(text="非流形边检测")
+        box.label(text="非流形边检测", icon='MESH_DATA')
         row = box.row()
-        row.operator("fum.detect_non_manifold_edges")
+        row.operator("fum.detect_non_manifold_edges", text="开始检测")
         row = box.row()
-        if non_manifold_edge_count > 0:
-            row.label(text=f"检测到 {non_manifold_edge_count} 条问题边")
+        if scene.fum_non_manifold_count > 0:
+            row.label(text=f"检测到 {scene.fum_non_manifold_count} 条问题边", icon='ERROR')
         else:
-            row.label(text="未检测到非流形边")
+            row.label(text="未检测到非流形边", icon='CHECKMARK')
 
         # 重复顶点检测部分
         box = layout.box()
-        box.label(text="重复顶点检测")
+        box.label(text="重复顶点检测", icon='VERTEXSEL')
         row = box.row()
-        # 增加一个属性行来显示和修改阈值
-        detect_duplicates_op = row.operator("fum.detect_duplicate_vertices")
+        detect_duplicates_op = row.operator("fum.detect_duplicate_vertices", text="开始检测")
         row.prop(detect_duplicates_op, "threshold", text="阈值")
         row = box.row()
-        if duplicate_vertex_count > 0:
-            row.label(text=f"检测到 {duplicate_vertex_count} 个重复顶点")
+        if scene.fum_duplicate_vertex_count > 0:
+            row.label(text=f"检测到 {scene.fum_duplicate_vertex_count} 个重复顶点", icon='ERROR')
         else:
-            row.label(text="未检测到重复顶点")
+            row.label(text="未检测到重复顶点", icon='CHECKMARK')
 
         # 翻转法线检测部分
         box = layout.box()
-        box.label(text="翻转法线检测")
+        box.label(text="翻转法线检测", icon='FACESEL')
         row = box.row()
-        row.operator("fum.detect_flipped_normals")
+        row.operator("fum.detect_flipped_normals", text="开始检测")
         row = box.row()
-        if flipped_face_count > 0:
-            row.label(text=f"检测到 {flipped_face_count} 个翻转法线面")
+        if scene.fum_flipped_normal_count > 0:
+            row.label(text=f"检测到 {scene.fum_flipped_normal_count} 个翻转法线面", icon='ERROR')
         else:
-            row.label(text="未检测到翻转法线面")
+            row.label(text="未检测到翻转法线面", icon='CHECKMARK')
 
         # N-Gon 检测部分
         box = layout.box()
-        box.label(text="N-Gon 检测")
+        box.label(text="N-Gon 检测", icon='MESH_ICOSPHERE')
         row = box.row()
-        row.operator("fum.detect_ngons")
+        row.operator("fum.detect_ngons", text="开始检测")
         row = box.row()
-        if ngon_count > 0:
-            row.label(text=f"检测到 {ngon_count} 个 N-Gons")
+        if scene.fum_ngon_count > 0:
+            row.label(text=f"检测到 {scene.fum_ngon_count} 个 N-Gons", icon='ERROR')
         else:
-            row.label(text="未检测到 N-Gons")
+            row.label(text="未检测到 N-Gons", icon='CHECKMARK')
 
         # 孤立顶点检测部分
         box = layout.box()
-        box.label(text="孤立顶点检测")
+        box.label(text="孤立顶点检测", icon='DOT')
         row = box.row()
-        row.operator("fum.detect_isolated_vertices")
+        row.operator("fum.detect_isolated_vertices", text="开始检测")
         row = box.row()
-        if isolated_vertex_count > 0:
-            row.label(text=f"检测到 {isolated_vertex_count} 个孤立顶点")
+        if scene.fum_isolated_vertex_count > 0:
+            row.label(text=f"检测到 {scene.fum_isolated_vertex_count} 个孤立顶点", icon='ERROR')
         else:
-            row.label(text="未检测到孤立顶点")
+            row.label(text="未检测到孤立顶点", icon='CHECKMARK')
