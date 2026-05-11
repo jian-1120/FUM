@@ -1,3 +1,10 @@
+# FUM v1.4
+
+Added:
+- Isolated vertices detection
+- Problem vertex highlighting
+- Enhanced mesh inspection capabilities
+
 # FUM v1.3
 
 Added:

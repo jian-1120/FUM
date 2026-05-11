@@ -4,12 +4,13 @@ from .operators.non_manifold_edges import FUM_OT_DetectNonManifoldEdges
 from .operators.duplicate_vertices import FUM_OT_DetectDuplicateVertices
 from .operators.flipped_normals import FUM_OT_DetectFlippedNormals
 from .operators.ngons import FUM_OT_DetectNGons
+from .operators.isolated_vertices import FUM_OT_DetectIsolatedVertices
 from .ui.panel import VIEW3D_PT_FUMPanel
 
 bl_info = {
     "name": "FUM",
     "author": "Jian",
-    "version": (1, 3),
+    "version": (1, 4),
     "blender": (3, 0, 0),
     "location": "3D Viewport > Sidebar > FUM",
     "description": "A collection of mesh analysis tools for Blender.",
@@ -24,6 +25,7 @@ classes = (
     FUM_OT_DetectDuplicateVertices,
     FUM_OT_DetectFlippedNormals,
     FUM_OT_DetectNGons,
+    FUM_OT_DetectIsolatedVertices,
     VIEW3D_PT_FUMPanel,
 )
 

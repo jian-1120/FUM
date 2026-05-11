@@ -26,6 +26,8 @@ A professional Blender mesh inspection and diagnostic plugin designed to help 3D
   Highlight problematic faces in Edit Mode
 * 🔲 检测 N-Gons (边数 > 4 的面)
   Detect N-Gons (faces with more than 4 edges)
+* 孤立顶点检测 (无连接边或面的顶点)
+  Detect isolated vertices (vertices with no connected edges or faces)
 
 * 🎯 自动高亮问题边
   Highlight problematic edges in Edit Mode
@@ -226,6 +228,7 @@ FUM/
 * [x] 重复顶点检测（Merge by Distance问题）
 * [x] 法线方向检测
 * [x] N-Gon 检测
+* [x] 孤立顶点检测
 * [ ] 模型质量评分系统
 * [ ] AI辅助优化建议
 
