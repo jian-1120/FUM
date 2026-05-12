@@ -1,29 +1,29 @@
-# FUM v1.5 (Engineering Update)
+# Changelog
 
-Added:
-- One-Click Full Inspection system
-- Scene-based state management (fixes undo/redo issues)
-- Consistent mode restoration using try/finally
-- Poll() methods for all operators (context safety)
-- Optimized BMesh usage in duplicate vertex detection
+## FUM v1.6 — Export Preflight Workflow Update
 
-# FUM v1.4
+FUM v1.6 adds the **Export Preflight Workflow**, a production-oriented mesh validation assistant for checking export readiness before assets move into game engines or other downstream pipelines. The new `fum.export_preflight_check` operator runs every existing inspection system, aggregates the results, and stores a clear PASS, WARNING, or FAIL status in Scene properties for persistent UI feedback.
 
-Added:
-- Isolated vertices detection
-- Problem vertex highlighting
-- Enhanced mesh inspection capabilities
+| Area | Change |
+|---|---|
+| Export workflow | Added one-click export readiness validation. |
+| Inspection aggregation | Runs non-manifold edge, duplicate vertex, flipped normal, N-Gon, and isolated vertex checks together. |
+| UI | Adds status, total issue count, and per-check counters in the FUM panel. |
+| Safety | Keeps context checks through `poll()` methods and uses safe mode restoration across inspection operators. |
+| State | Uses `bpy.types.Scene` properties for inspection counters and preflight summary state. |
 
-# FUM v1.3
+## FUM v1.5 — Engineering Update
 
-Added:
-- N-Gon detection
-- Problem face highlighting
-- Improved mesh inspection workflow
+FUM v1.5 introduced the one-click full inspection system, Scene-based state management, safer mode restoration using `try/finally`, `poll()` methods for context safety, and optimized BMesh usage in duplicate vertex detection.
 
-# FUM v1.2
+## FUM v1.4
 
-Added:
-- Flipped normals detection
-- Problem face highlighting
-- Improved mesh inspection workflow
+FUM v1.4 added isolated vertices detection, problem vertex highlighting, and enhanced mesh inspection capabilities.
+
+## FUM v1.3
+
+FUM v1.3 added N-Gon detection, problem face highlighting, and improved mesh inspection workflow.
+
+## FUM v1.2
+
+FUM v1.2 added flipped normals detection, problem face highlighting, and improved mesh inspection workflow.

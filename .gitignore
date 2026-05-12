@@ -1,1 +1,28 @@
+# Internal workflow / agent state
 PROJECT_STATE.md
+*.project-state.md
+.manus/
+
+# Python / Blender caches
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Local environment and editor files
+.env
+.env.*
+.vscode/
+.idea/
+.DS_Store
+
+# Build and release packaging output
+build/
+dist/
+release/
+*.zip
+*.tar.gz
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak

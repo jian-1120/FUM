@@ -45,6 +45,20 @@ A professional Blender mesh inspection and diagnostic plugin designed to help 3D
 
 ---
 
+## ✅ Export Preflight Status | 导出预检状态
+
+FUM v1.6 在 **Export Preflight** 区域提供面向资产导出流程的状态摘要。该摘要将所有检测结果汇总为一个清晰的导出结论，方便用户在进入 Unity、Unreal Engine、渲染或其他下游管线前快速判断模型风险。
+
+| Status | 中文说明 | English Meaning |
+|---|---|---|
+| PASS | 未发现已知网格问题，可以进入导出流程。 | No known mesh issues were found; the mesh is ready for export. |
+| WARNING | 存在需要复查的非阻断问题，例如重复顶点、N-Gons 或孤立顶点。 | Non-blocking issues were detected and should be reviewed before export. |
+| FAIL | 存在阻断导出的问题，例如非流形边或翻转法线。 | Blocking export issues were detected and should be fixed before export. |
+
+> FUM 不会自动修改用户模型；它负责检测、汇总并高亮问题，使建模师能够在导出前主动修复风险。
+
+---
+
 ## 📥 安装指南 | Installation Guide
 
 ### ⚠️ 重要提示 | Important Note
@@ -227,8 +241,16 @@ FUM/
 ├── ui/
 │   ├── __init__.py
 │   └── panel.py
-└── CHANGELOG.md
+├── CHANGELOG.md
+├── README.md
+└── RELEASE_NOTES_v1.6.md
 ```
+
+---
+
+## 🧹 Repository Hygiene | 仓库卫生
+
+内部工作流文件（例如 `PROJECT_STATE.md`）不会进入版本控制或发布下载包。`.gitignore` 已明确排除内部状态文件、缓存文件、本地环境文件和打包产物，以保持仓库结构清晰、专业且适合公开发布。
 
 ---
 
