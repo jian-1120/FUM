@@ -34,4 +34,4 @@ This release keeps the modular addon architecture intact. Operators continue to 
 
 ## Repository Hygiene
 
-Internal workflow files such as `PROJECT_STATE.md` are intentionally excluded from version control and release contents. No binary release assets are attached to this release; GitHub source downloads are generated from the tagged repository state.
+Internal workflow state files are intentionally excluded from version control and release contents. No binary release assets are attached to this release; GitHub source downloads are generated from the tagged repository state.
