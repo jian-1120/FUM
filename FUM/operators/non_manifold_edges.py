@@ -1,36 +1,37 @@
 import bpy
 import bmesh
 
+
 class FUM_OT_DetectNonManifoldEdges(bpy.types.Operator):
-    """检测并高亮显示模型中的非流形边"""
+    """Detect and highlight non-manifold edges in the active mesh."""
+
     bl_idname = "fum.detect_non_manifold_edges"
     bl_label = "检测非流形边"
     bl_options = {"REGISTER", "UNDO"}
 
     @classmethod
     def poll(cls, context):
-        return context.active_object is not None and context.active_object.type == 'MESH'
+        return context.active_object is not None and context.active_object.type == "MESH"
 
     def execute(self, context):
         obj = context.active_object
         original_mode = obj.mode
-        
-        try:
-            if obj.mode != 'EDIT':
-                bpy.ops.object.mode_set(mode='EDIT')
+        original_select_mode = tuple(context.tool_settings.mesh_select_mode)
 
+        try:
+            if obj.mode != "EDIT":
+                bpy.ops.object.mode_set(mode="EDIT")
+
+            context.tool_settings.mesh_select_mode = (False, True, False)
             bm = bmesh.from_edit_mesh(obj.data)
 
-            # 清除选择
             for elem in (*bm.verts, *bm.edges, *bm.faces):
                 elem.select = False
 
-            non_manifold_edges = [e for e in bm.edges if not e.is_manifold]
-            
+            non_manifold_edges = [edge for edge in bm.edges if not edge.is_manifold]
             for edge in non_manifold_edges:
                 edge.select = True
 
-            # 更新计数到 Scene 属性
             context.scene.fum_non_manifold_count = len(non_manifold_edges)
             bmesh.update_edit_mesh(obj.data)
 
@@ -39,10 +40,13 @@ class FUM_OT_DetectNonManifoldEdges(bpy.types.Operator):
             else:
                 self.report({"INFO"}, "未检测到非流形边。")
 
-        except Exception as e:
-            self.report({"ERROR"}, f"检测失败: {str(e)}")
+        except Exception as error:
+            self.report({"ERROR"}, f"检测失败: {str(error)}")
             return {"CANCELLED"}
         finally:
+            if obj.mode != "EDIT":
+                bpy.ops.object.mode_set(mode="EDIT")
+            context.tool_settings.mesh_select_mode = original_select_mode
             if obj.mode != original_mode:
                 bpy.ops.object.mode_set(mode=original_mode)
 

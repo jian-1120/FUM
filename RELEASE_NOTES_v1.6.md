@@ -28,6 +28,10 @@ The new Export Preflight workflow runs all existing FUM mesh checks from one act
 
 The FUM panel now includes a dedicated **Export Preflight** section. It provides a one-click **Run Export Check** action, a professional PASS/WARNING/FAIL result, total issue count, and per-check counters for quick inspection.
 
+## Stabilization Updates
+
+This stabilization pass adds the repository-level MIT `LICENSE` file, restores the original mesh select mode in non-manifold edge and duplicate vertex detection, removes broken local image references, prepares a minimal `images/` directory for future media, and records remaining architecture risks in `docs/ENGINEERING_NOTES.md`.
+
 ## Engineering Notes
 
 This release keeps the modular addon architecture intact. Operators continue to use `poll()` checks for context safety, inspection state is stored on `bpy.types.Scene`, and individual mesh checks retain safe mode restoration patterns. The legacy full inspection command remains available and now reuses the export preflight workflow for consistent results.

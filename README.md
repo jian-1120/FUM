@@ -212,15 +212,13 @@ These issues can cause problems in:
 
 > <img width="841" height="727" alt="image" src="https://github.com/user-attachments/assets/35e47d0a-22c7-4797-b23a-11cbe4743970" /><img width="621" height="749" alt="TU" src="https://github.com/user-attachments/assets/c433c826-61c4-4891-a5dc-32acee7e1a27" />
 
-```id="demo_path"
-images/demo.png
-```
-
 ---
 
 ## 🖼️ Screenshots | 截图展示
 
-*(预留区域：未来将在此添加更多功能演示 GIF 与截图)*
+本仓库保留 `images/` 目录用于未来存放截图、GIF 与演示素材。目前 README 中展示的是 GitHub 托管的预览图，避免在仓库中加入不必要的二进制文件。
+
+The repository keeps an `images/` directory for future screenshots, GIFs, and demo assets. The current README preview uses GitHub-hosted images to keep the repository lightweight.
 
 ---
 
@@ -241,7 +239,12 @@ FUM/
 ├── ui/
 │   ├── __init__.py
 │   └── panel.py
+├── docs/
+│   └── ENGINEERING_NOTES.md
+├── images/
+│   └── .gitkeep
 ├── CHANGELOG.md
+├── LICENSE
 ├── README.md
 └── RELEASE_NOTES_v1.6.md
 ```
@@ -276,7 +279,7 @@ Contributions, ideas, and feedback are welcome.
 
 ## 📄 License | 开源协议
 
-MIT License
+MIT License. See [`LICENSE`](LICENSE) for the full license text.
 
 ---
 

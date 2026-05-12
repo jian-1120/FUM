@@ -13,6 +13,10 @@ FUM v1.6 introduces a professional **Export Preflight Workflow** for validating 
 | Compatibility | Prepared the addon metadata for Blender 4.x workflows. |
 | Repository hygiene | Ensured internal workflow files are ignored and excluded from version-controlled release contents. |
 
+### v1.6 Stabilization Pass
+
+This stabilization pass adds the missing MIT `LICENSE` file, restores mesh select mode in the non-manifold edge and duplicate vertex operators, cleans broken local image references, prepares a minimal `images/` directory for future media, and documents current Export Preflight architecture risks in `docs/ENGINEERING_NOTES.md`.
+
 ## FUM v1.5 — Engineering Update
 
 FUM v1.5 improved the technical foundation of the addon by introducing the one-click full inspection system, Scene-based state management, safer mode restoration using `try/finally`, operator `poll()` methods for context safety, and optimized BMesh usage in duplicate vertex detection.
