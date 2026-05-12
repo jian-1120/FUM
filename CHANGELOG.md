@@ -1,3 +1,11 @@
+# FUM v1.6 (Export Preflight Workflow)
+
+Added:
+- Export Preflight Workflow: Aggregates all mesh checks and provides a summary status (PASS/WARNING/FAIL) for export readiness.
+- New operator `fum.export_preflight_check`.
+- UI integration for Export Preflight section in the FUM panel.
+- Scene properties for persistent preflight status management.
+
 # FUM v1.5 (Engineering Update)
 
 Added:

@@ -16,6 +16,11 @@ A professional Blender mesh inspection and diagnostic plugin designed to help 3D
 
 ## ✨ Features | 功能
 
+* 🚀 **导出预检工作流 (v1.6 新增)**
+  **Export Preflight Workflow (New in v1.6)**
+  一键运行所有网格检查，并提供汇总状态 (PASS/WARNING/FAIL)，确保模型在导出到游戏引擎或其他管线前符合质量标准。
+  Run all mesh checks at once and provide a summary status (PASS/WARNING/FAIL) to ensure mesh quality before exporting to game engines or other pipelines.
+
 * 🔍 检测模型中的非流形边
   Detect non-manifold edges in the active mesh
 * 🔺 检测模型中的重复顶点 (支持阈值调节)
@@ -136,9 +141,11 @@ We are actively exploring ways to optimize the addon packaging and installation 
 3. 打开 **FUM / Model Doctor** 面板
    Go to the **FUM / Model Doctor** tab
 
-4. 点击按钮：
-   Click:
-   **Detect Non-Manifold Edges**
+4. 点击 **Export Preflight** 部分的 "Run Export Check" 按钮。
+   Click the "Run Export Check" button in the **Export Preflight** section.
+
+5. 查看结果摘要 (PASS/WARNING/FAIL) 和详细问题列表。
+   Review the summary result (PASS/WARNING/FAIL) and detailed issue list.
 
 👉 插件会自动：
 👉 The addon will:
@@ -146,8 +153,8 @@ We are actively exploring ways to optimize the addon packaging and installation 
 * 进入编辑模式
   Switch to Edit Mode
 
-* 高亮所有非流形边
-  Highlight all non-manifold edges
+* 高亮所有问题元素
+  Highlight all problematic elements
 
 * 显示问题数量
   Display the number of issues
@@ -214,7 +221,9 @@ FUM/
 │   ├── non_manifold_edges.py
 │   ├── duplicate_vertices.py
 │   ├── flipped_normals.py
-│   └── ngons.py
+│   ├── ngons.py
+│   ├── isolated_vertices.py
+│   └── export_preflight.py
 ├── ui/
 │   ├── __init__.py
 │   └── panel.py
@@ -229,6 +238,7 @@ FUM/
 * [x] 法线方向检测
 * [x] N-Gon 检测
 * [x] 孤立顶点检测
+* [x] **导出预检工作流 (v1.6)**
 * [ ] 模型质量评分系统
 * [ ] AI辅助优化建议
 

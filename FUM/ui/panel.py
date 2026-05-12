@@ -12,9 +12,35 @@ class VIEW3D_PT_FUMPanel(bpy.types.Panel):
         layout = self.layout
         scene = context.scene
 
+        # --- Export Preflight Section ---
+        box = layout.box()
+        box.label(text="Export Preflight", icon='EXPORT')
+        
+        col = box.column(align=True)
+        col.scale_y = 1.2
+        col.operator("fum.export_preflight_check", text="Run Export Check", icon='PLAY')
+        
+        # Display Preflight Status
+        status = scene.fum_preflight_status
+        if status != "NONE":
+            status_box = box.box()
+            if status == "PASS":
+                status_box.label(text="RESULT: PASS", icon='CHECKMARK')
+                status_box.label(text="Mesh is ready for export.")
+            elif status == "WARNING":
+                status_box.label(text="RESULT: WARNING", icon='ERROR')
+                status_box.label(text="Minor issues detected.")
+            elif status == "FAIL":
+                status_box.label(text="RESULT: FAIL", icon='CANCEL')
+                status_box.label(text="Critical issues found!")
+        
+        layout.separator()
+
+        # --- Individual Tools Section ---
+        layout.label(text="Individual Inspection Tools", icon='TOOL_SETTINGS')
+        
         # 一键全检按钮
         col = layout.column(align=True)
-        col.scale_y = 1.5
         col.operator("fum.full_inspection", icon='VIEWZOOM')
         layout.separator()
 
