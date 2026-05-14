@@ -7,12 +7,13 @@ class FUM_OT_DetectDuplicateVertices(bpy.types.Operator):
     """Detect and highlight duplicate vertices in the active mesh."""
 
     bl_idname = "fum.detect_duplicate_vertices"
-    bl_label = "检测重复顶点"
+    bl_label = "Detect Duplicate Vertices"
+    bl_description = "Find vertices closer than the configured threshold and highlight them in Edit Mode"
     bl_options = {"REGISTER", "UNDO"}
 
     threshold: bpy.props.FloatProperty(
-        name="阈值",
-        description="距离阈值，小于此距离的顶点被视为重复",
+        name="Threshold",
+        description="Distance threshold used to classify vertices as duplicates",
         default=0.0001,
         min=0.000001,
         max=1.0,
@@ -60,12 +61,12 @@ class FUM_OT_DetectDuplicateVertices(bpy.types.Operator):
             bmesh.update_edit_mesh(obj.data)
 
             if context.scene.fum_duplicate_vertex_count > 0:
-                self.report({"INFO"}, f"检测到 {context.scene.fum_duplicate_vertex_count} 个重复顶点，已高亮显示。")
+                self.report({"INFO"}, f"Detected {context.scene.fum_duplicate_vertex_count} duplicate vertices.")
             else:
-                self.report({"INFO"}, "未检测到重复顶点。")
+                self.report({"INFO"}, "No duplicate vertices detected.")
 
         except Exception as error:
-            self.report({"ERROR"}, f"检测失败: {str(error)}")
+            self.report({"ERROR"}, f"Duplicate vertex detection failed: {str(error)}")
             return {"CANCELLED"}
         finally:
             if obj.mode != "EDIT":

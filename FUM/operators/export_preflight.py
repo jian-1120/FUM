@@ -71,7 +71,8 @@ class FUM_OT_ExportPreflightCheck(bpy.types.Operator):
     """Run every FUM mesh inspection and produce an export-readiness summary."""
 
     bl_idname = "fum.export_preflight_check"
-    bl_label = "Run Export Check"
+    bl_label = "Run Export Preflight"
+    bl_description = "Run all FUM mesh inspections and report export readiness"
     bl_options = {"REGISTER", "UNDO"}
 
     @classmethod

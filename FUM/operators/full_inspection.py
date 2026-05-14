@@ -6,6 +6,7 @@ class FUM_OT_FullInspection(bpy.types.Operator):
 
     bl_idname = "fum.full_inspection"
     bl_label = "Run Full Inspection"
+    bl_description = "Run all FUM mesh inspections and summarize the current mesh status"
     bl_options = {"REGISTER", "UNDO"}
 
     @classmethod

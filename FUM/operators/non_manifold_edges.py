@@ -6,7 +6,8 @@ class FUM_OT_DetectNonManifoldEdges(bpy.types.Operator):
     """Detect and highlight non-manifold edges in the active mesh."""
 
     bl_idname = "fum.detect_non_manifold_edges"
-    bl_label = "检测非流形边"
+    bl_label = "Detect Non-Manifold Edges"
+    bl_description = "Find non-manifold edges and highlight them in Edit Mode"
     bl_options = {"REGISTER", "UNDO"}
 
     @classmethod
@@ -36,12 +37,12 @@ class FUM_OT_DetectNonManifoldEdges(bpy.types.Operator):
             bmesh.update_edit_mesh(obj.data)
 
             if context.scene.fum_non_manifold_count > 0:
-                self.report({"INFO"}, f"检测到 {context.scene.fum_non_manifold_count} 条非流形边，已高亮显示。")
+                self.report({"INFO"}, f"Detected {context.scene.fum_non_manifold_count} non-manifold edges.")
             else:
-                self.report({"INFO"}, "未检测到非流形边。")
+                self.report({"INFO"}, "No non-manifold edges detected.")
 
         except Exception as error:
-            self.report({"ERROR"}, f"检测失败: {str(error)}")
+            self.report({"ERROR"}, f"Non-manifold edge detection failed: {str(error)}")
             return {"CANCELLED"}
         finally:
             if obj.mode != "EDIT":

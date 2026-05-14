@@ -10,14 +10,15 @@ from .operators.export_preflight import FUM_OT_ExportPreflightCheck
 from .ui.panel import VIEW3D_PT_FUMPanel
 
 bl_info = {
-    "name": "FUM",
+    "name": "FUM - Fix Your Mesh",
     "author": "Jian",
-    "version": (1, 6),
+    "version": (2, 0),
     "blender": (4, 0, 0),
     "location": "3D Viewport > Sidebar > FUM",
-    "description": "Export preflight and mesh inspection tools for Blender.",
+    "description": "Professional export preflight and mesh inspection tools for Blender.",
     "warning": "",
     "doc_url": "https://github.com/jian-1120/FUM",
+    "tracker_url": "https://github.com/jian-1120/FUM/issues",
     "category": "Mesh",
 }
 
@@ -55,7 +56,10 @@ def register():
     bpy.types.Scene.fum_isolated_vertex_count = bpy.props.IntProperty(name="Isolated Vertex Count", default=0)
     bpy.types.Scene.fum_preflight_status = bpy.props.StringProperty(name="Preflight Status", default="NONE")
     bpy.types.Scene.fum_preflight_total_issues = bpy.props.IntProperty(name="Preflight Total Issues", default=0)
-    bpy.types.Scene.fum_preflight_summary = bpy.props.StringProperty(name="Preflight Summary", default="Run Export Check to validate the active mesh.")
+    bpy.types.Scene.fum_preflight_summary = bpy.props.StringProperty(
+        name="Preflight Summary",
+        default="Run Export Preflight to validate the active mesh.",
+    )
 
 
 def unregister():

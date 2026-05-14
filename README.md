@@ -1,308 +1,134 @@
-# FUM 🛠️
+# FUM — Fix Your Mesh
 
-**Fix Your Mesh — A Blender Mesh Inspection Plugin**
+**FUM** is a professional Blender addon for mesh inspection and export preflight validation. It helps artists, environment designers, technical artists, and asset pipeline teams identify common geometry issues before models are exported to game engines, rendering workflows, or downstream production tools.
 
-FUM 是一个专业的 Blender 模型拓扑检测与诊断插件，旨在帮助 3D 艺术家快速定位并修复模型中的几何问题。
+## Version
 
-A professional Blender mesh inspection and diagnostic plugin designed to help 3D artists quickly locate and fix geometric issues in their models.
+| Field | Value |
+|---|---|
+| Current Version | v2.0 |
+| Release Theme | Professionalization Update |
+| Blender Target | Blender 4.x |
+| License | MIT License |
+| Repository | <https://github.com/jian-1120/FUM> |
 
----
+## What FUM Does
 
-## 📥 Download Latest Version | 下载最新版本
+FUM focuses on practical mesh quality checks that are commonly reviewed before export. The addon provides individual inspection tools as well as a unified **Export Preflight** workflow that summarizes the active mesh as **PASS**, **WARNING**, or **FAIL**.
 
-👉 **[点击这里下载 FUM 最新版本 (Download FUM Latest Release)](https://github.com/jian-1120/FUM/releases/latest)**
-
----
-
-## ✨ Features | 功能
-
-* 🚀 **导出预检工作流 (v1.6 新增)**
-  **Export Preflight Workflow (New in v1.6)**
-  一键运行所有网格检查，并提供汇总状态 (PASS/WARNING/FAIL)，确保模型在导出到游戏引擎或其他管线前符合质量标准。
-  Run all mesh checks at once and provide a summary status (PASS/WARNING/FAIL) to ensure mesh quality before exporting to game engines or other pipelines.
-
-* 🔍 检测模型中的非流形边
-  Detect non-manifold edges in the active mesh
-* 🔺 检测模型中的重复顶点 (支持阈值调节)
-  Detect duplicate vertices in the active mesh (with adjustable threshold)
-* 🔄 检测模型中的翻转法线面
-  Detect flipped normals faces in the active mesh
-* 🎨 自动高亮问题面
-  Highlight problematic faces in Edit Mode
-* 🔲 检测 N-Gons (边数 > 4 的面)
-  Detect N-Gons (faces with more than 4 edges)
-* 孤立顶点检测 (无连接边或面的顶点)
-  Detect isolated vertices (vertices with no connected edges or faces)
-
-* 🎯 自动高亮问题边
-  Highlight problematic edges in Edit Mode
-
-* 📊 在UI面板中显示检测结果
-  Display detection results in a simple UI panel
-
-* ⚡ 轻量快速，无需额外依赖
-  Lightweight and fast, no external dependencies
-
----
-
-## ✅ Export Preflight Status | 导出预检状态
-
-FUM v1.6 在 **Export Preflight** 区域提供面向资产导出流程的状态摘要。该摘要将所有检测结果汇总为一个清晰的导出结论，方便用户在进入 Unity、Unreal Engine、渲染或其他下游管线前快速判断模型风险。
-
-| Status | 中文说明 | English Meaning |
+| Inspection | Purpose | Preflight Severity |
 |---|---|---|
-| PASS | 未发现已知网格问题，可以进入导出流程。 | No known mesh issues were found; the mesh is ready for export. |
-| WARNING | 存在需要复查的非阻断问题，例如重复顶点、N-Gons 或孤立顶点。 | Non-blocking issues were detected and should be reviewed before export. |
-| FAIL | 存在阻断导出的问题，例如非流形边或翻转法线。 | Blocking export issues were detected and should be fixed before export. |
+| Non-Manifold Edges | Finds edges that can break topology, collision, shading, or export workflows. | FAIL |
+| Duplicate Vertices | Finds vertices closer than a configurable threshold. | WARNING |
+| Flipped Normals | Finds faces whose normals appear inverted compared with recalculated normals. | FAIL |
+| N-Gons | Finds faces with more than four vertices. | WARNING |
+| Isolated Vertices | Finds loose vertices with no connected edges. | WARNING |
 
-> FUM 不会自动修改用户模型；它负责检测、汇总并高亮问题，使建模师能够在导出前主动修复风险。
+## Export Preflight Workflow
 
----
+The **Export Preflight** workflow is designed as a final check before asset handoff. Click **Run Export Preflight** in the FUM panel to run all inspections, update issue counters, and display a clear export-readiness summary.
 
-## 📥 安装指南 | Installation Guide
+| Status | Meaning | Recommended Action |
+|---|---|---|
+| PASS | No known mesh issues were found. | The mesh is ready for export. |
+| WARNING | Non-blocking issues were found. | Review the highlighted geometry before export. |
+| FAIL | Blocking export issues were found. | Fix the reported issues before export. |
 
-### ⚠️ 重要提示 | Important Note
+> FUM does not automatically modify your mesh. It detects, highlights, and summarizes potential problems so artists remain in control of the final cleanup process.
 
-从 GitHub 下载的 ZIP 文件（例如 `FUM-main.zip`）解压后，通常会得到一个名为 `FUM-main` 的文件夹。进入该文件夹后，你会发现真正的插件本体是**内层的 `FUM` 文件夹**，其中包含 `__init__.py`、`operators/`、`ui/` 等文件。请务必将这个内层的 `FUM` 文件夹提供给 Blender 进行安装。
+## Installation
 
-⚠️ **Please make sure you install the INNER "FUM" folder, not the outer folder with the "-main" suffix.**
+Download the latest release from the [GitHub Releases page](https://github.com/jian-1120/FUM/releases/latest). If you download the source ZIP from GitHub, install the inner `FUM` folder that contains `__init__.py`, `operators/`, `ui/`, and `blender_manifest.toml`.
 
----
+| Step | Action |
+|---|---|
+| 1 | Download or clone the repository. |
+| 2 | Locate the inner `FUM` addon folder. |
+| 3 | Copy the `FUM` folder into Blender's addons directory, or install it through Blender's Add-ons preferences. |
+| 4 | Enable **FUM - Fix Your Mesh** in `Edit > Preferences > Add-ons`. |
+| 5 | Open the 3D Viewport sidebar with `N`, then select the **FUM** tab. |
 
-### 步骤一：下载插件 ZIP 包 | Step 1: Download the Addon ZIP Package
+Typical Blender addon directories are shown below.
 
-从 GitHub Releases 页面下载最新版插件 ZIP 文件（例如 `FUM_vx.x.x.zip`）：
-Download the latest addon ZIP file from the GitHub Releases page (e.g., `FUM_vx.x.x.zip`):
+| Platform | Addon Directory |
+|---|---|
+| Windows | `C:\Users\<username>\AppData\Roaming\Blender Foundation\Blender\<version>\scripts\addons\` |
+| macOS | `/Users/<username>/Library/Application Support/Blender/<version>/scripts/addons/` |
+| Linux | `~/.config/blender/<version>/scripts/addons/` |
 
-👉 **[下载 FUM 最新版本 (Download FUM Latest Release)](https://github.com/jian-1120/FUM/releases/latest)**
+## User Workflow
 
----
+FUM is built around a simple inspection loop. Select a mesh object, open the **FUM** sidebar panel, run **Export Preflight**, and review the status summary. If the result is **WARNING** or **FAIL**, use the individual inspection tools to focus on a specific issue category and review the highlighted geometry in Edit Mode.
 
-### 步骤二：解压并找到真正的插件文件夹 | Step 2: Unzip and Locate the Actual Addon Folder
+## UI and UX Principles
 
-解压下载的 ZIP 文件。你会看到一个名为 `FUM-main` 的文件夹（这是 GitHub 默认行为）。进入该文件夹，找到**内层的 `FUM` 文件夹**。
+Version 2.0 introduces an English-first interface for international Blender users. Panel labels, buttons, operator names, reports, warnings, summaries, and property names are written in clear professional English. The UI prioritizes a predictable order: export preflight first, summary counters second, individual tools last.
 
-Unzip the downloaded ZIP file. You will find a folder named `FUM-main` (this is GitHub's default behavior). Navigate into this folder to locate the **inner `FUM` folder**.
+## Visual Assets
 
----
+The repository includes an `images/` directory prepared for future Blender Market presentation assets.
 
-### 步骤三：复制到 Blender `addons` 目录 | Step 3: Copy to Blender `addons` Directory
+| Directory | Intended Content |
+|---|---|
+| `images/banners/` | Store future marketplace banners and repository headers. |
+| `images/screenshots/` | Store UI screenshots and feature previews. |
+| `images/gifs/` | Store workflow demonstrations and short animated previews. |
 
-将步骤二中找到的**内层 `FUM` 文件夹**整体复制到 Blender 的 `addons` 插件目录。该目录通常位于：
-Copy the **inner `FUM` folder** found in Step 2 directly into Blender's `addons` directory. This directory is typically located at:
+Current preview images are hosted through GitHub attachments to keep the repository lightweight until final marketing assets are prepared.
 
-*   **Windows**: `C:\Users\[你的用户名]\AppData\Roaming\Blender Foundation\Blender\[版本号]\scripts\addons\`
-*   **macOS**: `/Users/[你的用户名]/Library/Application Support/Blender/[版本号]/scripts/addons/`
-*   **Linux**: `~/.config/blender/[版本号]/scripts/addons/`
+> <img width="841" height="727" alt="FUM mesh inspection preview" src="https://github.com/user-attachments/assets/35e47d0a-22c7-4797-b23a-11cbe4743970" /><img width="621" height="749" alt="FUM interface preview" src="https://github.com/user-attachments/assets/c433c826-61c4-4891-a5dc-32acee7e1a27" />
 
----
+## Repository Structure
 
-### 步骤四：在 Blender 中启用插件 | Step 4: Enable the Addon in Blender
-
-1.  打开 Blender。
-    Open Blender.
-2.  进入 `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)`。
-    Go to `Edit` → `Preferences` → `Add-ons`.
-3.  在搜索框中输入 `FUM`，找到插件。
-    Search for `FUM` in the search bar.
-4.  勾选插件旁边的复选框以启用它。
-    Check the box next to the addon to enable it.
-
----
-
-## 🔄 更新旧版本插件 | Updating an Existing Version
-
-⚠️ **重要警告：在安装新版本前，务必彻底移除旧版本，否则可能导致插件功能异常或 Blender 崩溃。**
-⚠️ **Important Warning: Before installing a new version, you MUST completely remove the old version to prevent unexpected behavior or Blender crashes.**
-
-1.  **关闭 Blender**。
-    **Close Blender**.
-2.  进入 Blender 的 `addons` 目录（参考上方“步骤三”）。
-    Navigate to Blender's `addons` directory (refer to "Step 3" above).
-3.  **删除旧版本 `FUM` 文件夹**。确保该目录中不再有任何旧的 `FUM` 文件。
-    **Delete the old `FUM` folder**. Ensure no old `FUM` files remain in this directory.
-4.  如果存在 `__pycache__` 文件夹，要保留。
-    If a `__pycache__` folder exists, you may keep.
-5.  按照上述“安装指南”的步骤，将新版**内层 `FUM` 文件夹**复制到 `addons` 目录。
-    Follow the "Installation Guide" steps above to copy the new **inner `FUM` folder** into the `addons` directory.
-6.  重新打开 Blender。
-    Restart Blender.
-7.  进入 `编辑(Edit)` → `偏好设置(Preferences)` → `插件(Add-ons)`，搜索 `FUM` 并勾选启用。
-    Go to `Edit` → `Preferences` → `Add-ons`, search for `FUM`, and enable it.
-
----
-
-## 💡 未来计划 | Future Plan
-
-我们正在积极探索优化插件打包和安装流程，目标是实现：
-We are actively exploring ways to optimize the addon packaging and installation process, aiming for:
-
-*   **标准 Blender ZIP 打包**: 允许用户直接通过 Blender 的 `Install from ZIP` 功能安装。
-    **Standard Blender ZIP Packaging**: Enable direct installation via Blender's `Install from ZIP` feature.
-*   **自动化 Release 打包**: 自动生成符合 Blender 规范的 ZIP 包，减少手动操作。
-    **Automated Release Packaging**: Automatically generate Blender-compliant ZIP packages to minimize manual steps.
-
----
-
-## 🚀 Usage | 使用方法
-
-1. 选择一个模型对象
-   Select a mesh object
-
-2. 按 `N` 打开右侧栏
-   Press `N` to open the sidebar
-
-3. 打开 **FUM / Model Doctor** 面板
-   Go to the **FUM / Model Doctor** tab
-
-4. 点击 **Export Preflight** 部分的 "Run Export Check" 按钮。
-   Click the "Run Export Check" button in the **Export Preflight** section.
-
-5. 查看结果摘要 (PASS/WARNING/FAIL) 和详细问题列表。
-   Review the summary result (PASS/WARNING/FAIL) and detailed issue list.
-
-👉 插件会自动：
-👉 The addon will:
-
-* 进入编辑模式
-  Switch to Edit Mode
-
-* 高亮所有问题元素
-  Highlight all problematic elements
-
-* 显示问题数量
-  Display the number of issues
-
----
-
-## 🧠 What is Non-Manifold Geometry? | 什么是非流形结构？
-
-非流形边是指不符合标准拓扑规则的几何结构，例如：
-
-Non-manifold geometry refers to topology issues such as:
-
-* 被超过两个面共享的边
-  Edges shared by more than two faces
-
-* 开放边（模型破洞）
-  Open edges (holes)
-
-* 内部面或重叠几何
-  Internal faces or overlapping geometry
-
-这些问题可能导致：
-
-These issues can cause problems in:
-
-* 游戏引擎
-
-* Game engines
-
-* 渲染流程
-
-* Rendering pipelines
-
-* 3D打印
-
-* 3D printing
-
----
-
-## 📸 Preview | 效果展示
-
-> <img width="841" height="727" alt="image" src="https://github.com/user-attachments/assets/35e47d0a-22c7-4797-b23a-11cbe4743970" /><img width="621" height="749" alt="TU" src="https://github.com/user-attachments/assets/c433c826-61c4-4891-a5dc-32acee7e1a27" />
-
----
-
-## 🖼️ Screenshots | 截图展示
-
-本仓库保留 `images/` 目录用于未来存放截图、GIF 与演示素材。目前 README 中展示的是 GitHub 托管的预览图，避免在仓库中加入不必要的二进制文件。
-
-The repository keeps an `images/` directory for future screenshots, GIFs, and demo assets. The current README preview uses GitHub-hosted images to keep the repository lightweight.
-
----
-
-## 📁 Project Structure | 项目结构
-
-```id="proj_struct"
+```text
 FUM/
-│
-├── __init__.py
-├── operators/
+├── FUM/
 │   ├── __init__.py
-│   ├── non_manifold_edges.py
-│   ├── duplicate_vertices.py
-│   ├── flipped_normals.py
-│   ├── ngons.py
-│   ├── isolated_vertices.py
-│   └── export_preflight.py
-├── ui/
-│   ├── __init__.py
-│   └── panel.py
+│   ├── blender_manifest.toml
+│   ├── operators/
+│   │   ├── duplicate_vertices.py
+│   │   ├── export_preflight.py
+│   │   ├── flipped_normals.py
+│   │   ├── full_inspection.py
+│   │   ├── isolated_vertices.py
+│   │   ├── ngons.py
+│   │   └── non_manifold_edges.py
+│   └── ui/
+│       └── panel.py
 ├── docs/
 │   └── ENGINEERING_NOTES.md
 ├── images/
-│   └── .gitkeep
+│   ├── banners/
+│   ├── gifs/
+│   └── screenshots/
 ├── CHANGELOG.md
 ├── LICENSE
 ├── README.md
-└── RELEASE_NOTES_v1.6.md
+└── RELEASE_NOTES_v2.0.md
 ```
 
----
+## Release Packaging Notes
 
-## 🧹 Repository Hygiene | 仓库卫生
+For manual installation, the inner `FUM` folder is the Blender addon folder. For future marketplace packaging, the package should preserve `__init__.py`, `blender_manifest.toml`, `operators/`, `ui/`, and the MIT `LICENSE` file. Internal workflow files and generated build artifacts are excluded through `.gitignore`.
 
-内部工作流状态文件不会进入版本控制或发布下载包。`.gitignore` 已明确排除内部状态文件、缓存文件、本地环境文件和打包产物，以保持仓库结构清晰、专业且适合公开发布。
+## Roadmap
 
----
+| Status | Item |
+|---|---|
+| Complete | Non-manifold edge detection |
+| Complete | Duplicate vertex detection |
+| Complete | Flipped normals detection |
+| Complete | N-Gon detection |
+| Complete | Isolated vertex detection |
+| Complete | Export Preflight workflow |
+| Complete | English-first professional UI pass |
+| Planned | Mesh quality scoring system |
+| Planned | Guided cleanup suggestions |
 
-## 🛠️ Roadmap | 开发计划
+## License
 
-* [x] 重复顶点检测（Merge by Distance问题）
-* [x] 法线方向检测
-* [x] N-Gon 检测
-* [x] 孤立顶点检测
-* [x] **导出预检工作流 (v1.6)**
-* [ ] 模型质量评分系统
-* [ ] AI辅助优化建议
+FUM is released under the MIT License. See [`LICENSE`](LICENSE) for the full license text.
 
----
+## Author
 
-## 🤝 Contributing | 参与贡献
-
-欢迎提出建议或参与开发！
-
-Contributions, ideas, and feedback are welcome.
-
----
-
-## 📄 License | 开源协议
-
-MIT License. See [`LICENSE`](LICENSE) for the full license text.
-
----
-
-## 👤 Author | 作者
-
-环境艺术专业学生，正在探索 AI + 建模工作流工具。
-
-An environment design student exploring AI-assisted modeling tools.
-
----
-
-## ⭐ Support | 支持
-
-如果你觉得这个项目有用：
-
-If you find this project useful:
-
-* ⭐ 给项目点个星
-
-* ⭐ Star this repository
-
-* 📢 分享给其他建模师
-
-* 📢 Share with other 3D artists
-
----
+FUM is developed by **Jian**, an environment design student exploring AI-assisted modeling workflows and practical 3D production tools.

@@ -1,0 +1,21 @@
+schema_version = "1.0.0"
+
+id = "fum_fix_your_mesh"
+version = "2.0.0"
+name = "FUM - Fix Your Mesh"
+tagline = "Professional export preflight and mesh inspection tools"
+maintainer = "Jian"
+type = "add-on"
+
+website = "https://github.com/jian-1120/FUM"
+
+# Blender compatibility
+blender_version_min = "4.0.0"
+
+# Marketplace metadata
+tags = ["Mesh", "Modeling", "Pipeline", "Import-Export"]
+license = ["SPDX:MIT"]
+copyright = ["2026 Jian"]
+
+[permissions]
+files = "Optional file access may be used by Blender when installing or packaging the addon."

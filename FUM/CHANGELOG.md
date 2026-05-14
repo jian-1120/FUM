@@ -1,8 +1,20 @@
 # Changelog
 
+## FUM v2.0 — Professionalization Update
+
+FUM v2.0 professionalizes the addon for an English-first Blender user experience and a cleaner Blender Market-ready repository presentation. This update intentionally avoids feature bloat and focuses on polish, metadata completeness, UI clarity, and release quality.
+
+| Area | Change |
+|---|---|
+| UI | Converted visible operator labels, reports, warnings, and panel text to professional English. |
+| Manifest | Added a completed Blender 4.x `blender_manifest.toml`. |
+| Addon Metadata | Updated `bl_info` to v2.0 with professional description and repository links. |
+| Workflow | Preserved the existing Export Preflight workflow while improving naming consistency and summary wording. |
+| Repository | Updated documentation, release notes, and visual asset structure for marketplace readiness. |
+
 ## FUM v1.6 — Export Preflight Workflow Update
 
-FUM v1.6 adds the **Export Preflight Workflow**, a production-oriented mesh validation assistant for checking export readiness before assets move into game engines or other downstream pipelines. The new `fum.export_preflight_check` operator runs every existing inspection system, aggregates the results, and stores a clear PASS, WARNING, or FAIL status in Scene properties for persistent UI feedback.
+FUM v1.6 added the **Export Preflight Workflow**, a production-oriented mesh validation assistant for checking export readiness before assets move into game engines or other downstream pipelines. The `fum.export_preflight_check` operator runs every existing inspection system, aggregates the results, and stores a clear PASS, WARNING, or FAIL status in Scene properties for persistent UI feedback.
 
 | Area | Change |
 |---|---|
@@ -14,7 +26,7 @@ FUM v1.6 adds the **Export Preflight Workflow**, a production-oriented mesh vali
 
 ### v1.6 Stabilization Pass
 
-This stabilization pass adds the repository-level MIT `LICENSE` file, restores mesh select mode for non-manifold edge and duplicate vertex detection, removes broken local image references, and documents remaining Export Preflight architecture risks without expanding the v1.6 feature scope.
+This stabilization pass added the repository-level MIT `LICENSE` file, restored mesh select mode for non-manifold edge and duplicate vertex detection, removed broken local image references, and documented remaining Export Preflight architecture risks without expanding the v1.6 feature scope.
 
 ## FUM v1.5 — Engineering Update
 
