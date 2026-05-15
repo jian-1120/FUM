@@ -6,22 +6,17 @@
 
 | Field | Value |
 |---|---|
-| Current Version | v2.0 |
-| Release Theme | Professionalization Update |
+| Current Version | v2.1 |
+| Release Theme | UX Cleanup Update |
 | Blender Target | Blender 4.x |
 | License | MIT License |
 | Repository | <https://github.com/jian-1120/FUM> |
 
 ## 🗺️ Roadmap
 
-FUM is evolving from a Blender addon into a cross-platform mesh diagnostic standard.
-
 * Current: Blender addon (open source, MIT)
-* Summer 2026: FUM Pro for Blender (paid, with advanced repair guidance)
-* Late 2026: FUM Mobile (iOS + Android standalone app)
-* 2027: FUM for Maya & FUM for 3ds Max
-
-Interested in the Maya or 3ds Max version? Star this repo and stay tuned.
+* Summer 2026: FUM Pro for Blender (with repair guidance)
+* Exploring: Maya, 3ds Max, and mobile versions
 
 ## What FUM Does
 
@@ -73,7 +68,7 @@ FUM is built around a simple inspection loop. Select a mesh object, open the **F
 
 ## UI and UX Principles
 
-Version 2.0 introduces an English-first interface for international Blender users. Panel labels, buttons, operator names, reports, warnings, summaries, and property names are written in clear professional English. The UI prioritizes a predictable order: export preflight first, summary counters second, individual tools last.
+Version 2.1 refines the English-first interface for international Blender users. Panel labels, buttons, operator names, reports, warnings, summaries, and property names are written in clear professional English. The UI prioritizes a predictable order: export preflight first, summary counters second, individual tools last.
 
 ## Visual Assets
 
@@ -122,19 +117,7 @@ FUM/
 
 For manual installation, the inner `FUM` folder is the Blender addon folder. For future marketplace packaging, the package should preserve `__init__.py`, `blender_manifest.toml`, `operators/`, `ui/`, and the MIT `LICENSE` file. Internal workflow files and generated build artifacts are excluded through `.gitignore`.
 
-## Roadmap
 
-| Status | Item |
-|---|---|
-| Complete | Non-manifold edge detection |
-| Complete | Duplicate vertex detection |
-| Complete | Flipped normals detection |
-| Complete | N-Gon detection |
-| Complete | Isolated vertex detection |
-| Complete | Export Preflight workflow |
-| Complete | English-first professional UI pass |
-| Planned | Mesh quality scoring system |
-| Planned | Guided cleanup suggestions |
 
 ## License
 
