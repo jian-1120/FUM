@@ -6,18 +6,20 @@ This document records engineering boundaries for FUM's export preflight architec
 
 | Version | Theme | Engineering Boundary |
 |---|---|---|
-| v2.0 | Professionalization Update | English-first UI, complete manifest metadata, professional repository presentation, release clarity, and visual asset structure. |
+    | v2.1 | UX Cleanup Update | Unified workflow, targeted inspection tools, lightweight repair suggestions, roadmap integration, version update, and documentation cleanup. |
+    | v2.0 | Professionalization Update | English-first UI, complete manifest metadata, professional repository presentation, release clarity, and visual asset structure. |
 | v1.6 | Export Preflight Workflow Update | Unified inspection workflow with PASS/WARNING/FAIL export readiness status. |
 
-## v2.0 Stabilization Summary
+## v2.1 Stabilization Summary
 
 | Area | Status | Notes |
 |---|---|---|
-| UI language | Complete | Visible UI labels, buttons, operator labels, reports, warnings, and summaries are English-first. |
-| Manifest metadata | Complete | `blender_manifest.toml` defines version, author, compatibility, tags, license, and repository link. |
-| License compliance | Complete | A repository-level MIT `LICENSE` file is present and matches README license wording. |
-| Visual structure | Complete | `images/banners/`, `images/screenshots/`, and `images/gifs/` are prepared for future polished assets. |
-| Release scope | Preserved | v2.0 intentionally avoids large feature expansion and keeps the existing inspection architecture stable. |
+| Unified Workflow | Complete | Redundant "Full Inspection" button removed; "Export Preflight" is the sole entry point. |
+| Targeted Inspection Tools | Complete | Individual inspection tools section clearly labeled. |
+| Repair Suggestions | Complete | Lightweight repair suggestions added to reports for key inspection types. |
+| Roadmap Integration | Complete | New "Roadmap" section added to `README.md`. |
+| Version Update | Complete | Plugin version updated to `v2.1` in `__init__.py` and `blender_manifest.toml`. |
+| Documentation Cleanup | Complete | `PROJECT_STATE.md` removed from public repository. |
 
 ## Export Preflight Architecture Review
 

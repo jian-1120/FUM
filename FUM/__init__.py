@@ -12,7 +12,7 @@ from .ui.panel import VIEW3D_PT_FUMPanel
 bl_info = {
     "name": "FUM - Fix Your Mesh",
     "author": "Jian",
-    "version": (2, 0),
+    "version": (2, 1),
     "blender": (4, 0, 0),
     "location": "3D Viewport > Sidebar > FUM",
     "description": "Professional export preflight and mesh inspection tools for Blender.",

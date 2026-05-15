@@ -12,6 +12,17 @@
 | License | MIT License |
 | Repository | <https://github.com/jian-1120/FUM> |
 
+## 🗺️ Roadmap
+
+FUM is evolving from a Blender addon into a cross-platform mesh diagnostic standard.
+
+* Current: Blender addon (open source, MIT)
+* Summer 2026: FUM Pro for Blender (paid, with advanced repair guidance)
+* Late 2026: FUM Mobile (iOS + Android standalone app)
+* 2027: FUM for Maya & FUM for 3ds Max
+
+Interested in the Maya or 3ds Max version? Star this repo and stay tuned.
+
 ## What FUM Does
 
 FUM focuses on practical mesh quality checks that are commonly reviewed before export. The addon provides individual inspection tools as well as a unified **Export Preflight** workflow that summarizes the active mesh as **PASS**, **WARNING**, or **FAIL**.

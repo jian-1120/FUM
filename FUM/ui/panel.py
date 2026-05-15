@@ -43,10 +43,10 @@ class VIEW3D_PT_FUMPanel(bpy.types.Panel):
         counts_box.label(text=f"Isolated Vertices: {scene.fum_isolated_vertex_count}")
 
         layout.separator()
-        layout.label(text="Individual Inspection Tools", icon="TOOL_SETTINGS")
+        layout.label(text="Targeted Inspection Tools", icon="TOOL_SETTINGS")
 
         column = layout.column(align=True)
-        column.operator("fum.full_inspection", text="Run Full Inspection", icon="VIEWZOOM")
+
         layout.separator()
 
         self._draw_check_box(
