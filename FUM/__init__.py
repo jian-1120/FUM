@@ -5,7 +5,7 @@ from .operators.duplicate_vertices import FUM_OT_DetectDuplicateVertices
 from .operators.flipped_normals import FUM_OT_DetectFlippedNormals
 from .operators.ngons import FUM_OT_DetectNGons
 from .operators.isolated_vertices import FUM_OT_DetectIsolatedVertices
-from .operators.full_inspection import FUM_OT_FullInspection
+
 from .operators.export_preflight import FUM_OT_ExportPreflightCheck
 from .ui.panel import VIEW3D_PT_FUMPanel
 
@@ -28,7 +28,7 @@ classes = (
     FUM_OT_DetectFlippedNormals,
     FUM_OT_DetectNGons,
     FUM_OT_DetectIsolatedVertices,
-    FUM_OT_FullInspection,
+
     FUM_OT_ExportPreflightCheck,
     VIEW3D_PT_FUMPanel,
 )
