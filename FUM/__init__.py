@@ -17,9 +17,10 @@ bl_info = {
     "location": "3D Viewport > Sidebar > FUM",
     "description": "Professional export preflight and mesh inspection tools for Blender.",
     "warning": "",
-    "doc_url": "https://github.com/jian-1120/FUM",
+    "doc_url": "https://www.gnu.org/licenses/gpl-3.0.txt",
     "tracker_url": "https://github.com/jian-1120/FUM/issues",
     "category": "Mesh",
+    "license": "GPL-3.0-only",
 }
 
 classes = (

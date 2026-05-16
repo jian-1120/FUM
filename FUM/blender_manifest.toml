@@ -14,7 +14,7 @@ blender_version_min = "4.0.0"
 
 # Marketplace metadata
 tags = ["Mesh", "Modeling", "Pipeline", "Import-Export"]
-license = ["SPDX:MIT"]
+license = ["SPDX:GPL-3.0-only"]
 copyright = ["2026 Jian"]
 
 [permissions]
