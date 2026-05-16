@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "fum_fix_your_mesh"
-version = "2.1.0"
+version = "2.2.0"
 name = "FUM - Fix Your Mesh"
 tagline = "Professional export preflight and mesh inspection tools"
 maintainer = "Jian"

@@ -38,9 +38,9 @@ class FUM_OT_DetectNGons(bpy.types.Operator):
             bmesh.update_edit_mesh(obj.data)
 
             if context.scene.fum_ngon_count > 0:
-                self.report({"INFO"}, f"Detected {context.scene.fum_ngon_count} N-Gons. Suggestion: Triangulate or use limited dissolve.")
+                self.report({"WARNING"}, f"{context.scene.fum_ngon_count} N-Gons detected.")
             else:
-                self.report({"INFO"}, "No N-Gons detected.")
+                self.report({"INFO"}, "No issues detected.")
 
         except Exception as error:
             self.report({"ERROR"}, f"N-Gon detection failed: {str(error)}")

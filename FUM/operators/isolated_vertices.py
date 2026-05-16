@@ -38,9 +38,9 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
             bmesh.update_edit_mesh(obj.data)
 
             if context.scene.fum_isolated_vertex_count > 0:
-                self.report({"INFO"}, f"Detected {context.scene.fum_isolated_vertex_count} isolated vertices. Suggestion: Delete isolated vertices.")
+                self.report({"WARNING"}, f"{context.scene.fum_isolated_vertex_count} isolated vertices detected.")
             else:
-                self.report({"INFO"}, "No isolated vertices detected.")
+                self.report({"INFO"}, "No issues detected.")
 
         except Exception as error:
             self.report({"ERROR"}, f"Isolated vertex detection failed: {str(error)}")

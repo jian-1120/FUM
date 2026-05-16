@@ -61,9 +61,9 @@ class FUM_OT_DetectDuplicateVertices(bpy.types.Operator):
             bmesh.update_edit_mesh(obj.data)
 
             if context.scene.fum_duplicate_vertex_count > 0:
-                self.report({"INFO"}, f"Detected {context.scene.fum_duplicate_vertex_count} duplicate vertices. Suggestion: Use Merge by Distance.")
+                self.report({"WARNING"}, f"{context.scene.fum_duplicate_vertex_count} duplicate vertices detected.")
             else:
-                self.report({"INFO"}, "No duplicate vertices detected.")
+                self.report({"INFO"}, "No issues detected.")
 
         except Exception as error:
             self.report({"ERROR"}, f"Duplicate vertex detection failed: {str(error)}")

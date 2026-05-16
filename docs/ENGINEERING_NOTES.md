@@ -6,6 +6,7 @@ This document records engineering boundaries for FUM's export preflight architec
 
 | Version | Theme | Engineering Boundary |
 |---|---|---|
+    | v2.2 | Public Release Polish Update | README productization, standardized UX wording, visual asset placeholders, and repository cleanup. |
     | v2.1 | UX Cleanup Update | Unified workflow, targeted inspection tools, lightweight repair suggestions, roadmap integration, version update, and documentation cleanup. |
     | v2.0 | Professionalization Update | English-first UI, complete manifest metadata, professional repository presentation, release clarity, and visual asset structure. |
 | v1.6 | Export Preflight Workflow Update | Unified inspection workflow with PASS/WARNING/FAIL export readiness status. |
