@@ -11,7 +11,7 @@ from .ui.panel import VIEW3D_PT_FUMPanel
 
 bl_info = {
     "name": "FUM - Fix Your Mesh",
-    "author": "Jian",
+    "author": "Jian – 3D tools developer",
     "version": (2, 2),
     "blender": (4, 0, 0),
     "location": "3D Viewport > Sidebar > FUM",

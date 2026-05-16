@@ -4,7 +4,7 @@ id = "fum_fix_your_mesh"
 version = "2.2.0"
 name = "FUM - Fix Your Mesh"
 tagline = "Professional export preflight and mesh inspection tools"
-maintainer = "Jian"
+maintainer = "Jian – 3D tools developer"
 type = "add-on"
 
 website = "https://github.com/jian-1120/FUM"

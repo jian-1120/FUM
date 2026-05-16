@@ -3,6 +3,8 @@ PROJECT_STATE.md
 PROJECT_STATE*
 *.project-state.md
 .manus/
+PRODUCT_GOVERNANCE*.md
+ENGINEERING_NOTES*.md
 
 # Python / Blender caches
 __pycache__/
@@ -27,4 +29,3 @@ release/
 *.log
 *.tmp
 *.bak
-PRODUCT_GOVERNANCE*.md
