@@ -2,77 +2,70 @@
 
 **A Blender mesh validation pipeline tool.**
 
-FUM is designed to empower Technical Artists, 3D Asset Authors, and Pipeline Teams to ensure the integrity and export-readiness of their geometry before models are shipped to game engines, render farms, or any downstream production tools. It transforms the often tedious process of mesh inspection into an efficient, reliable validation step, making it an indispensable part of your 3D production workflow.
+FUM helps artists and production teams validate mesh quality before export. It is designed around a clear **Export Preflight Workflow** that checks common geometry issues, summarizes the active mesh with **PASS**, **WARNING**, or **FAIL** states, and gives users a focused review step before assets move into game engines, rendering workflows, 3D printing preparation, or downstream production pipelines.
 
-## 🎯 Target Users
+The goal of FUM is not to replace artistic judgment or automatically alter geometry. Instead, it provides a consistent validation layer that makes mesh review easier to repeat, easier to understand, and easier to integrate into a professional Blender workflow.
 
-*   **Technical Artists:** Ensure assets meet technical specifications and reduce rework.
-*   **3D Asset Authors:** Validate model quality and elevate delivery standards.
-*   **Pipeline Teams:** Standardize mesh quality across teams and optimize production workflows.
-*   **Game Asset Creators:** Ensure models perform optimally in game engines and prevent runtime issues.
-*   **3D Printing Creators:** Verify models are suitable for 3D printing, avoiding physical defects.
+## Product Focus
 
-## 🚀 Core Feature: The Export Preflight Workflow
+FUM is built for export reliability. Rather than presenting mesh checks as scattered tools, it organizes validation around a single preflight process that helps users understand whether an asset is ready to move forward.
 
-The core strength of FUM lies in its unique **Export Preflight Workflow**. Going beyond simple mesh checking, it provides a unified validation system that rapidly assesses the export-readiness of your active mesh, summarizing its status with clear **PASS**, **WARNING**, or **FAIL** states.
+| Area | FUM Approach |
+|---|---|
+| Workflow | A unified export preflight process for validating the active mesh. |
+| Feedback | Clear PASS, WARNING, and FAIL states for export-readiness review. |
+| Inspection | Focused checks for common geometry issues that can affect production handoff. |
+| Control | Detection and highlighting without automatically modifying user geometry. |
 
-This workflow significantly enhances production reliability by identifying and highlighting potential issues early, thereby preventing costly fixes and project delays further down the pipeline.
+## Target Users
+
+FUM is intended for Blender users who need predictable mesh validation before export. Technical artists can use it to check assets against production expectations, 3D asset authors can use it to improve delivery quality, and pipeline teams can use it as a lightweight quality-control step in a broader asset workflow.
+
+| User Group | Typical Value |
+|---|---|
+| Technical Artists | Quickly review geometry problems before handoff or integration. |
+| 3D Asset Authors | Validate model quality before delivery. |
+| Pipeline Teams | Standardize a repeatable mesh validation step. |
+| Game Asset Creators | Identify geometry issues before engine import. |
+| 3D Printing Creators | Review common mesh problems before print preparation. |
+
+## Export Preflight Workflow
+
+The **Export Preflight Workflow** is the primary FUM experience. It runs the supported inspection checks, updates issue counters, and reports the overall export-readiness state of the active mesh.
 
 | Status | Meaning | Recommended Action |
 |---|---|---|
-| **PASS** | No known mesh issues were detected. | Your mesh is ready for export. |
+| **PASS** | No known mesh issues were detected. | The mesh is ready for export review. |
 | **WARNING** | Non-blocking issues were detected. | Review the highlighted geometry before export. |
 | **FAIL** | Blocking export issues were detected. | Fix the reported issues before export. |
 
-> FUM does not automatically modify your mesh. It detects, highlights, and summarizes potential problems, empowering artists to remain in control of the final cleanup process.
+FUM currently checks for non-manifold edges, duplicate vertices, flipped normals, N-gons, and isolated vertices. These checks are presented as part of the preflight workflow and are also available as targeted inspection tools for focused review.
 
-## 💡 FUM vs. Blender Native Tools
+## FUM Compared with Blender Native Tools
 
-Blender's native tools offer fundamental mesh selection capabilities, but they are often:
+Blender includes powerful native mesh selection and cleanup capabilities, but many checks are spread across different menus, modes, and manual operations. FUM is designed to make validation more workflow-oriented by grouping common checks into a single export-focused process.
 
-*   **Fragmented:** Requiring navigation between multiple menus and modes.
-*   **Manual:** Relying on the user to manually trigger and interpret results.
-*   **Not Workflow-Oriented:** Lacking a unified, export-centric validation process.
+| Blender Native Tools | FUM |
+|---|---|
+| Often require manual navigation across different tools and modes. | Provides a unified validation workflow. |
+| Results may depend on user interpretation and repeated manual steps. | Reports clear PASS, WARNING, and FAIL states. |
+| General-purpose modeling tools. | Export-oriented mesh validation for production review. |
 
-In contrast, FUM provides:
+FUM complements Blender’s existing toolset by making common validation steps easier to run consistently before export.
 
-*   **A Unified Validation Workflow:** Run all critical checks with a single click.
-*   **PASS/WARNING/FAIL System:** Clear and intuitive feedback on export readiness.
-*   **Export-Oriented Inspection:** Focused on common mesh issues encountered in production environments.
+## Installation
 
-FUM integrates these disparate checks into one efficient pipeline tool, significantly boosting productivity and model quality.
+Download the latest `FUM_vX.X.zip` file from the [GitHub Releases page](https://github.com/jian-1120/FUM/releases/latest). In Blender, open `Edit > Preferences > Add-ons`, click `Install...`, select the downloaded ZIP file, and enable **FUM - Fix Your Mesh**. Once enabled, open the 3D Viewport sidebar with `N` and select the **FUM** tab.
 
-## ⬇️ Installation Guide
+The release ZIP is packaged with the Blender add-on folder at the top level, so it can be installed directly through Blender without extracting repository files manually.
 
-1.  Download the latest `FUM_vX.X.zip` file from the [GitHub Releases page](https://github.com/jian-1120/FUM/releases/latest).
-2.  In Blender, go to `Edit > Preferences > Add-ons`.
-3.  Click the `Install...` button and select the `FUM_vX.X.zip` file you downloaded.
-4.  Enable the **FUM - Fix Your Mesh** add-on.
-5.  In the 3D Viewport, press `N` to open the sidebar, and you will find the **FUM** panel.
+## Visual Assets
 
-## 🖼️ Visual Assets
+The repository includes an `images/` directory for product screenshots, workflow GIFs, and banner artwork. Visual assets can be added as they become available without changing the add-on package structure.
 
-### Product Banner
+## Future Direction
 
-<!-- Placeholder for Product Banner Image -->
-
-### Demo GIF
-
-<!-- Placeholder for Demo GIF -->
-
-### Feature Screenshots
-
-<!-- Placeholder for Feature Screenshot 1 -->
-
-<!-- Placeholder for Feature Screenshot 2 -->
-
-<!-- Placeholder for Feature Screenshot 3 -->
-
-<!-- Placeholder for Feature Screenshot 4 -->
-
-## 🗺️ Future Direction
-
-*   **Future:** FUM Pro for Blender (with advanced repair guidance, batch processing, custom validation profiles, and pipeline integration)
+Future development is focused on **FUM Pro for Blender**, with advanced repair guidance as the primary direction. Additional capabilities will be considered only when they support the core validation workflow and preserve add-on stability.
 
 ## License
 
@@ -82,12 +75,6 @@ FUM is released under the GNU General Public License v3.0. See [`LICENSE`](LICEN
 
 FUM is developed by **Jian – 3D tools developer**.
 
-## Version Information
+## Repository
 
-| Field | Value |
-|---|---|
-| Current Version | v2.2 |
-| Release Theme | Commercial Packaging Update |
-| Blender Target | Blender 4.x |
-| License | GPLv3 |
-| Repository | <https://github.com/jian-1120/FUM> |
+Project repository: <https://github.com/jian-1120/FUM>
