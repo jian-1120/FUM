@@ -55,7 +55,7 @@ class FUM_OT_DetectFlippedNormals(bpy.types.Operator):
             bmesh.update_edit_mesh(obj.data)
 
             if context.scene.fum_flipped_normal_count > 0:
-                self.report({"ERROR"}, f"{context.scene.fum_flipped_normal_count} flipped normals detected.")
+                self.report({"WARNING"}, f"{context.scene.fum_flipped_normal_count} flipped normals detected.")
             else:
                 self.report({"INFO"}, "No issues detected.")
 

@@ -37,7 +37,7 @@ class FUM_OT_DetectNonManifoldEdges(bpy.types.Operator):
             bmesh.update_edit_mesh(obj.data)
 
             if context.scene.fum_non_manifold_count > 0:
-                self.report({"ERROR"}, f"{context.scene.fum_non_manifold_count} non-manifold edges detected.")
+                self.report({"WARNING"}, f"{context.scene.fum_non_manifold_count} non-manifold edges detected.")
             else:
                 self.report({"INFO"}, "No issues detected.")
 

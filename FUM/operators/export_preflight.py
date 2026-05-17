@@ -103,7 +103,9 @@ class FUM_OT_ExportPreflightCheck(bpy.types.Operator):
             scene.fum_preflight_total_issues = total_issues
             scene.fum_preflight_summary = detail
 
-            self.report(report_type, f"EXPORT PREFLIGHT: {status} ({total_issues} issues found)")
+            # Use INFO for PASS/WARNING to avoid popups, use ERROR only for FAIL
+            final_report_type = {"INFO"} if status in {"PASS", "WARNING"} else {"ERROR"}
+            self.report(final_report_type, f"EXPORT PREFLIGHT: {status} ({total_issues} issues found)")
             return {"FINISHED"}
         finally:
             if active_object and active_object.mode != original_mode:
