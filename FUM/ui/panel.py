@@ -45,8 +45,6 @@ class VIEW3D_PT_FUMPanel(bpy.types.Panel):
         layout.separator()
         layout.label(text="Targeted Inspection Tools", icon="TOOL_SETTINGS")
 
-        column = layout.column(align=True)
-
         layout.separator()
 
         self._draw_check_box(
