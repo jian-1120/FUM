@@ -29,6 +29,10 @@ class FUM_OT_DetectDuplicateVertices(bpy.types.Operator):
         obj = context.active_object
         original_mode = obj.mode
         original_select_mode = tuple(context.tool_settings.mesh_select_mode)
+        
+        # Save original theme color
+        theme = context.preferences.themes[0].view_3d
+        original_vertex_select = tuple(theme.vertex_select)
 
         try:
             if obj.mode != "EDIT":
@@ -57,8 +61,8 @@ class FUM_OT_DetectDuplicateVertices(bpy.types.Operator):
             for vertex_index in duplicate_indices:
                 bm.verts[vertex_index].select = True
 
-            # Set highlight color to bright red for better visibility
-            context.preferences.themes[0].view_3d.vertex_select = (1.0, 0.15, 0.15)
+            # Set highlight color to magenta for maximum visibility
+            theme.vertex_select = (1.0, 0.1, 0.6)
 
             context.scene.fum_duplicate_vertex_count = len(duplicate_indices)
             bmesh.update_edit_mesh(obj.data)
@@ -72,6 +76,9 @@ class FUM_OT_DetectDuplicateVertices(bpy.types.Operator):
             self.report({"ERROR"}, f"Duplicate vertex detection failed: {str(error)}")
             return {"CANCELLED"}
         finally:
+            # Restore original theme color
+            theme.vertex_select = original_vertex_select
+            
             if obj.mode != "EDIT":
                 bpy.ops.object.mode_set(mode="EDIT")
             context.tool_settings.mesh_select_mode = original_select_mode

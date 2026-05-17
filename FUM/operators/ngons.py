@@ -18,6 +18,10 @@ class FUM_OT_DetectNGons(bpy.types.Operator):
         obj = context.active_object
         original_mode = obj.mode
         original_select_mode = tuple(context.tool_settings.mesh_select_mode)
+        
+        # Save original theme color
+        theme = context.preferences.themes[0].view_3d
+        original_face_select = tuple(theme.face_select)
 
         try:
             if obj.mode != "EDIT":
@@ -34,8 +38,8 @@ class FUM_OT_DetectNGons(bpy.types.Operator):
             for index in ngon_indices:
                 bm.faces[index].select = True
 
-            # Set highlight color to bright red for better visibility
-            context.preferences.themes[0].view_3d.face_select = (1.0, 0.15, 0.15, 1.0)
+            # Set highlight color to magenta for maximum visibility
+            theme.face_select = (1.0, 0.1, 0.6, 1.0)
 
             context.scene.fum_ngon_count = len(ngon_indices)
             bmesh.update_edit_mesh(obj.data)
@@ -49,6 +53,9 @@ class FUM_OT_DetectNGons(bpy.types.Operator):
             self.report({"ERROR"}, f"N-Gon detection failed: {str(error)}")
             return {"CANCELLED"}
         finally:
+            # Restore original theme color
+            theme.face_select = original_face_select
+            
             if obj.mode != original_mode:
                 bpy.ops.object.mode_set(mode=original_mode)
             context.tool_settings.mesh_select_mode = original_select_mode

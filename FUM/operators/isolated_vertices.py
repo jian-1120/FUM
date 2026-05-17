@@ -18,6 +18,10 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
         obj = context.active_object
         original_mode = obj.mode
         original_select_mode = tuple(context.tool_settings.mesh_select_mode)
+        
+        # Save original theme color
+        theme = context.preferences.themes[0].view_3d
+        original_vertex_select = tuple(theme.vertex_select)
 
         try:
             if obj.mode != "EDIT":
@@ -34,8 +38,8 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
             for index in isolated_indices:
                 bm.verts[index].select = True
 
-            # Set highlight color to bright red for better visibility
-            context.preferences.themes[0].view_3d.vertex_select = (1.0, 0.15, 0.15)
+            # Set highlight color to magenta for maximum visibility
+            theme.vertex_select = (1.0, 0.1, 0.6)
 
             context.scene.fum_isolated_vertex_count = len(isolated_indices)
             bmesh.update_edit_mesh(obj.data)
@@ -49,6 +53,9 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
             self.report({"ERROR"}, f"Isolated vertex detection failed: {str(error)}")
             return {"CANCELLED"}
         finally:
+            # Restore original theme color
+            theme.vertex_select = original_vertex_select
+            
             if obj.mode != original_mode:
                 bpy.ops.object.mode_set(mode=original_mode)
             context.tool_settings.mesh_select_mode = original_select_mode
