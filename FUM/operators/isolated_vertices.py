@@ -34,6 +34,9 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
             for index in isolated_indices:
                 bm.verts[index].select = True
 
+            # Set highlight color to bright red for better visibility
+            context.preferences.themes[0].view_3d.vertex_select = (1.0, 0.15, 0.15)
+
             context.scene.fum_isolated_vertex_count = len(isolated_indices)
             bmesh.update_edit_mesh(obj.data)
 

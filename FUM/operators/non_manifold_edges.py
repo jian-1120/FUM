@@ -33,6 +33,9 @@ class FUM_OT_DetectNonManifoldEdges(bpy.types.Operator):
             for edge in non_manifold_edges:
                 edge.select = True
 
+            # Set highlight color to bright red for better visibility
+            context.preferences.themes[0].view_3d.edge_select = (1.0, 0.15, 0.15)
+
             context.scene.fum_non_manifold_count = len(non_manifold_edges)
             bmesh.update_edit_mesh(obj.data)
 

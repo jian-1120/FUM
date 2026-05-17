@@ -51,6 +51,9 @@ class FUM_OT_DetectFlippedNormals(bpy.types.Operator):
             for index in flipped_indices:
                 bm.faces[index].select = True
 
+            # Set highlight color to bright red for better visibility
+            context.preferences.themes[0].view_3d.face_select = (1.0, 0.15, 0.15, 1.0)
+
             context.scene.fum_flipped_normal_count = len(flipped_indices)
             bmesh.update_edit_mesh(obj.data)
 

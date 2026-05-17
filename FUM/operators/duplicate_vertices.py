@@ -57,6 +57,9 @@ class FUM_OT_DetectDuplicateVertices(bpy.types.Operator):
             for vertex_index in duplicate_indices:
                 bm.verts[vertex_index].select = True
 
+            # Set highlight color to bright red for better visibility
+            context.preferences.themes[0].view_3d.vertex_select = (1.0, 0.15, 0.15)
+
             context.scene.fum_duplicate_vertex_count = len(duplicate_indices)
             bmesh.update_edit_mesh(obj.data)
 
