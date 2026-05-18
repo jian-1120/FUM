@@ -17,17 +17,15 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
     def execute(self, context):
         obj = context.active_object
         original_mode = obj.mode
-        original_select_mode = tuple(context.tool_settings.mesh_select_mode)
-        
-        # Save original theme color
-        theme = context.preferences.themes[0].view_3d
-        original_vertex_select = tuple(theme.vertex_select)
+        original_select_mode = context.tool_settings.mesh_select_mode[:]
 
         try:
             if obj.mode != "EDIT":
                 bpy.ops.object.mode_set(mode="EDIT")
 
+            # Force correct selection mode for visibility
             context.tool_settings.mesh_select_mode = (True, False, False)
+            
             bm = bmesh.from_edit_mesh(obj.data)
             bm.verts.ensure_lookup_table()
 
@@ -38,11 +36,12 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
             for index in isolated_indices:
                 bm.verts[index].select = True
 
-            # Set highlight color to magenta for maximum visibility
-            theme.vertex_select = (1.0, 0.1, 0.6)
-
             context.scene.fum_isolated_vertex_count = len(isolated_indices)
             bmesh.update_edit_mesh(obj.data)
+
+            # Force viewport refresh
+            if context.area:
+                context.area.tag_redraw()
 
             if context.scene.fum_isolated_vertex_count > 0:
                 self.report({"WARNING"}, f"{context.scene.fum_isolated_vertex_count} isolated vertices detected.")
@@ -53,11 +52,10 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
             self.report({"ERROR"}, f"Isolated vertex detection failed: {str(error)}")
             return {"CANCELLED"}
         finally:
-            # Restore original theme color
-            theme.vertex_select = original_vertex_select
+            # Restore original selection mode
+            context.tool_settings.mesh_select_mode = original_select_mode
             
             if obj.mode != original_mode:
                 bpy.ops.object.mode_set(mode=original_mode)
-            context.tool_settings.mesh_select_mode = original_select_mode
 
         return {"FINISHED"}
