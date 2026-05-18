@@ -40,8 +40,9 @@ class FUM_OT_DetectIsolatedVertices(bpy.types.Operator):
             bmesh.update_edit_mesh(obj.data)
 
             # Force viewport refresh
-            if context.area:
-                context.area.tag_redraw()
+            for area in context.screen.areas:
+                if area.type == 'VIEW_3D':
+                    area.tag_redraw()
 
             if context.scene.fum_isolated_vertex_count > 0:
                 self.report({"WARNING"}, f"{context.scene.fum_isolated_vertex_count} isolated vertices detected.")
